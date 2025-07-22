@@ -1,13 +1,14 @@
 @import "tailwindcss";
 
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Titillium Web', sans-serif;
+}
+
 :root {
-  /* Custom colors */
-  --blackbg: #0a0a0a;
-  --whitebg: #ffffff;
-  --primarycolor: #333333;
-  --secondarycolor: #f5f5f5;
-  --accentcolor: #0ea5e9;
-  
   /* Shadcn UI variables */
   --radius: 0.625rem;
   --background: 0 0% 100%;

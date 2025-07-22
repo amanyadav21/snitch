@@ -1,16 +1,15 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { Home, NotFound } from './pages'
-import './index.css'
+import Hero from './components/hero'
+import Categories from './components/categories'
+import Footer from './components/Footer'
 
 const App = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Router>
+    <div>
+      <Hero />
+      <Categories />
+      <Footer />
+    </div>
   )
 }
 

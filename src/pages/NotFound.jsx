@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button } from "../components/ui"
-import { ArrowLeft, Home, Search, ShoppingBag } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { ArrowLeft, Home, Search, ShoppingBag } from 'lucide-react'
 
 const NotFound = () => {
   return (
@@ -32,28 +31,21 @@ const NotFound = () => {
 
         {/* Action Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-          <Button
-            asChild
-            size="lg"
-            className="bg-accentcolor hover:bg-blue-600 text-white px-8 py-4 text-lg font-semibold group transition-all duration-300"
+          <Link 
+            to="/"
+            className="inline-flex items-center justify-center bg-accentcolor hover:bg-blue-600 text-white px-8 py-4 text-lg font-semibold group transition-all duration-300 rounded-md"
           >
-            <Link to="/">
-              <Home className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-              Back to Home
-            </Link>
-          </Button>
+            <Home className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
+            Back to Home
+          </Link>
           
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-2 border-whitebg text-whitebg hover:bg-whitebg hover:text-blackbg px-8 py-4 text-lg font-semibold transition-all duration-300"
+          <Link 
+            to="/shop"
+            className="inline-flex items-center justify-center border-2 border-whitebg text-whitebg hover:bg-whitebg hover:text-blackbg px-8 py-4 text-lg font-semibold transition-all duration-300 rounded-md"
           >
-            <Link to="/shop">
-              <ShoppingBag className="mr-2 h-5 w-5" />
-              Continue Shopping
-            </Link>
-          </Button>
+            <ShoppingBag className="mr-2 h-5 w-5" />
+            Continue Shopping
+          </Link>
         </div>
 
         {/* Quick Links */}
