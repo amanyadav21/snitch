@@ -20,9 +20,6 @@ Bottom ->
 Trousers, jeans, cargo pants, joggers, Boxers, shorts, pyjamas.
 ----------
 
-Luxe ->
-Snitch Luxe
-----------
 
 Accssories ->
 Sunglasses, perfumes, belts, footwear, bags

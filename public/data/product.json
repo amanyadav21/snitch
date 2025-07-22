@@ -1,0 +1,142 @@
+[
+  {
+    "id": "p1001",
+    "title": "Regular Fit Zipper Polo T-Shirt",
+    "slug": "regular-fit-zipper-polo-tshirt",
+    "description": "Comfortable and stylish regular fit zipper polo T-shirt perfect for everyday wear.",
+    "price": 1399,
+    "discountPrice": 1399,
+    "rating": 5,
+    "ratingCount": 3,
+    "category": ["Top", "T-shirts"],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202829/4MST2728-02-M17_oihpwi.webp",
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202827/4MST2728-02_3_5f42dd4e-51e8-42e2-98e6-76213ce0493c_tv7sxs.webp",
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202824/4MST2728-02-M17_1_a47eom.webp",
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202822/4MST2728-02_1_545f137b-cec3-45aa-8398-1547989317f6_uuv21u.webp",
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202821/4MST2728-02_2_a764b048-0e58-472c-bc2a-235cf6bf8da9_uwhxg6.webp",
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202819/4MST2728-02_5_57dfadde-a326-425d-9929-1c0ec665ed38_zuc2wi.webp"
+        ]
+      }
+    ],
+    "sizes": ["XS", "S", "M", "L", "XL", "XXL"],
+    "stock": 50,
+    "brand": "Snitch",
+    "isLuxe": false,
+    "isPlusSizeAvailable": true
+  },
+  {
+    "id": "p1001",
+    "title": "Regular Fit Zipper Polo T-Shirt",
+    "slug": "regular-fit-zipper-polo-tshirt",
+    "description": "Comfortable and stylish regular fit zipper polo T-shirt perfect for everyday wear.",
+    "price": 1399,
+    "discountPrice": 1399,
+    "rating": 5,
+    "ratingCount": 3,
+    "category": ["Top", "T-shirts"],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000",
+        "images": [
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202829/4MST2728-02-M17_oihpwi.webp",
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202827/4MST2728-02_3_5f42dd4e-51e8-42e2-98e6-76213ce0493c_tv7sxs.webp",
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202824/4MST2728-02-M17_1_a47eom.webp",
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202822/4MST2728-02_1_545f137b-cec3-45aa-8398-1547989317f6_uuv21u.webp",
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202821/4MST2728-02_2_a764b048-0e58-472c-bc2a-235cf6bf8da9_uwhxg6.webp",
+          "https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202819/4MST2728-02_5_57dfadde-a326-425d-9929-1c0ec665ed38_zuc2wi.webp"
+        ]
+      }
+    ],
+    "sizes": ["XS", "S", "M", "L", "XL", "XXL"],
+    "stock": 50,
+    "brand": "Snitch",
+    "isLuxe": false,
+    "isPlusSizeAvailable": true
+  },
+  {
+    "id": 2,
+    "title": "Oversized Cotton Hoodie",
+    "category": "top",
+    "price": 1799,
+    "rating": 4.5,
+    "sizes": ["S", "M", "L", "XL"],
+    "colors": [
+      {
+        "name": "Black",
+        "hex": "#000000"
+      },
+      {
+        "name": "White", 
+        "hex": "#FFFFFF"
+      }
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1602810318383-c64f8470f737",
+      "https://images.unsplash.com/photo-1593032465171-8f8a01e747f3"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Slim Fit Checked Shirt",
+    "category": "top",
+    "price": 1599,
+    "rating": 4.2,
+    "sizes": ["M", "L", "XL"],
+    "colors": [
+      {
+        "name": "Red",
+        "hex": "#DC2626"
+      },
+      {
+        "name": "White",
+        "hex": "#FFFFFF"
+      }
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1562158070-57c5b8f1adf7",
+      "https://images.unsplash.com/photo-1585386959984-a4155228f1ec"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Linen Blend Mandarin Shirt",
+    "category": "top",
+    "price": 1899,
+    "rating": 4.8,
+    "sizes": ["S", "M", "L", "XL", "XXL"],
+    "colors": [
+      {
+        "name": "Beige",
+        "hex": "#F5F5DC"
+      }
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1586034679973-55b53a83798b",
+      "https://images.unsplash.com/photo-1551854838-5b2efcdf2a8b"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Half Sleeve Graphic T-Shirt",
+    "category": "top",
+    "price": 899,
+    "rating": 4.1,
+    "sizes": ["XS", "S", "M", "L"],
+    "colors": [
+      {
+        "name": "Olive Green",
+        "hex": "#808000"
+      }
+    ],
+    "images": [
+      "https://images.unsplash.com/photo-1520975698511-cc0c5ed52c3b",
+      "https://images.unsplash.com/photo-1598970434795-0c54fe7c0642"
+    ]
+  }
+]
