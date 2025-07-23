@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FiShoppingCart, FiMenu, FiX, FiSearch, FiUser } from 'react-icons/fi';
+import { Link, useLocation } from 'react-router-dom';
+import { FiShoppingCart, FiMenu, FiX, FiUser } from 'react-icons/fi';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [bagItems, setBagItems] = useState(0);
   const [wishlistItems, setWishlistItems] = useState(0);
   const [scrolled, setScrolled] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [showSearchSuggestions, setShowSearchSuggestions] = useState(false);
   const location = useLocation();
-  const navigate = useNavigate();
 
   const mainLinks = [
     { name: 'Home', href: '/' },
@@ -52,26 +49,6 @@ const Navbar = () => {
   }, []);
 
   const isActive = (path) => location.pathname === path;
-
-  // Handle search functionality
-  const handleSearch = (e) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-      setSearchQuery('');
-      setShowSearchSuggestions(false);
-      setIsOpen(false); // Close mobile menu if open
-    }
-  };
-
-  const handleSearchInputChange = (e) => {
-    setSearchQuery(e.target.value);
-    setShowSearchSuggestions(e.target.value.length > 0);
-  };
-
-  const quickSearchSuggestions = [
-    'shirts', 'jeans', 't-shirts', 'jackets', 'accessories', 'shoes', 'watches'
-  ];
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -117,50 +94,8 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Right Side - Search, Account, Wishlist, Cart */}
+          {/* Right Side - Account, Wishlist, Cart */}
           <div className='flex items-center space-x-1'>
-            {/* Search Icon - Desktop */}
-            <div className="hidden sm:flex relative">
-              <form onSubmit={handleSearch} className="relative">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={handleSearchInputChange}
-                  placeholder="Search products..."
-                  className="bg-gray-800/50 border border-gray-700 focus:border-green-500 focus:ring-2 focus:ring-green-500/20 rounded-lg px-4 py-2 pl-10 text-white placeholder-gray-400 w-64 transition-all duration-300"
-                  onFocus={() => setShowSearchSuggestions(searchQuery.length > 0)}
-                  onBlur={() => setTimeout(() => setShowSearchSuggestions(false), 200)}
-                />
-                <FiSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4" />
-                
-                {/* Search Suggestions Dropdown */}
-                {showSearchSuggestions && (
-                  <div className="absolute top-full left-0 right-0 mt-2 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-50">
-                    <div className="p-2">
-                      <p className="text-xs text-gray-400 px-2 py-1">Quick searches:</p>
-                      {quickSearchSuggestions
-                        .filter(suggestion => suggestion.toLowerCase().includes(searchQuery.toLowerCase()))
-                        .slice(0, 5)
-                        .map((suggestion, index) => (
-                          <button
-                            key={index}
-                            onClick={() => {
-                              setSearchQuery(suggestion);
-                              navigate(`/search?q=${encodeURIComponent(suggestion)}`);
-                              setShowSearchSuggestions(false);
-                            }}
-                            className="w-full text-left px-2 py-2 text-sm text-gray-300 hover:bg-gray-700 rounded transition-colors duration-200"
-                          >
-                            <FiSearch className="inline h-3 w-3 mr-2" />
-                            {suggestion}
-                          </button>
-                        ))}
-                    </div>
-                  </div>
-                )}
-              </form>
-            </div>
-
             {/* Account Icon */}
             <button className='hidden sm:flex p-2.5 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200 group'>
               <FiUser className='h-5 w-5 group-hover:scale-110 transition-transform duration-200' />
@@ -221,20 +156,6 @@ const Navbar = () => {
           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         } overflow-hidden`}>
           <div className='px-2 pt-2 pb-6 space-y-1 bg-gray-900/50 backdrop-blur-sm rounded-lg mt-2'>
-            {/* Mobile Search */}
-            <div className='px-4 py-3'>
-              <form onSubmit={handleSearch} className='relative'>
-                <FiSearch className='absolute left-7 top-1/2 transform -translate-y-1/2 text-gray-400 h-4 w-4' />
-                <input
-                  type='text'
-                  value={searchQuery}
-                  onChange={handleSearchInputChange}
-                  placeholder='Search products...'
-                  className='w-full bg-gray-800 text-white pl-10 pr-4 py-2 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-green-500'
-                />
-              </form>
-            </div>
-
             {/* Mobile Links */}
             {mainLinks.map((link) => (
               <Link

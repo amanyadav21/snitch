@@ -12,7 +12,6 @@ import Accessories from './components/pages/Accessories'
 import Wishlist from './components/pages/Wishlist'
 import AddToBag from './components/pages/Addtobag'
 import NotFoundPage from './components/pages/Notfoundpage'
-import SearchResults from './components/pages/SearchResults'
 
 const App = () => {
   return (
@@ -33,7 +32,6 @@ const App = () => {
           <Route path="/accessories" element={<Accessories />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/bag" element={<AddToBag />} />
-          <Route path="/search" element={<SearchResults />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <Footer />
