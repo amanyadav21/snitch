@@ -5,7 +5,7 @@ const hero = () => {
   return (
     <div className='w-full h-screen bg-white'>
       {/* Navbar at top */}
-      <Navbar />
+      {/* <Navbar /> */}
       
       {/* Hero Content */}
       <div className="flex flex-col lg:flex-row min-h-screen">

@@ -1,3 +1,34 @@
+All -> 
+New, Bestsellers, shirts, T-shirts, trousers, jeans, overshirt, cargo pants, sunglasses, joggers, boxers, shorts, polo T-shirts, linen edit, formal wear, sweaters, essentials, hoodies & sweatshirts, worth the wait, perfumes, belts, jackets, pyjamas, footwear, co-ords, bags, sale, plus size, snitch luxe, streetwear.
+---------
+sale ->
+Sale
+---------
+
+Tranding ->
+Bestsellers, polo T-shirts, linen edit, formal wear, essentials, worth the wait, streetwear
+---------
+Plus Size ->
+Plus size
+---------
+
+TOP -> 
+shirts, T-shirts, overshirt, sweaters, Hooties & Sweatshirts, Jackets, Plus Size, snitch luxe.
+---------
+
+Bottom ->
+Trousers, jeans, cargo pants, joggers, Boxers, shorts, pyjamas.
+----------
+
+
+Accssories ->
+Sunglasses, perfumes, belts, footwear, bags
+
+
+
+
+------
+
 [
   {
     "id": "1",
@@ -27,8 +58,7 @@
     "stock": 50,
     "brand": "Snitch",
     "isLuxe": false,
-    "isPlusSizeAvailable": true,
-    "isOnSale": true
+    "isPlusSizeAvailable": true
   },
   {
     "id": "2",
@@ -39,7 +69,7 @@
     "discountPrice": 1599,
     "rating": 5,
     "ratingCount": 4,
-    "category": ["Bottom", "Trousers"],
+    "category": ["Sale", "Trousers"],
     "colors": [
       {
         "name": "Black",
@@ -60,8 +90,7 @@
     "stock": 50,
     "brand": "Snitch",
     "isLuxe": false,
-    "isPlusSizeAvailable": true,
-    "isOnSale": true
+    "isPlusSizeAvailable": true
   },
   {
     "id": "3",
@@ -72,7 +101,7 @@
     "discountPrice": 1799,
     "rating": 5,
     "ratingCount": 4,
-    "category": ["Bottom", "Jeans"],
+    "category": ["Sale", "Jeans","Bottom"],
     "colors": [
       {
         "name": "Black",
@@ -91,8 +120,7 @@
     "stock": 50,
     "brand": "Snitch",
     "isLuxe": false,
-    "isPlusSizeAvailable": true,
-    "isOnSale": true
+    "isPlusSizeAvailable": true
   },
   {
     "id": "4",
@@ -103,7 +131,7 @@
     "discountPrice": 1499,
     "rating": 5,
     "ratingCount": 3,
-    "category": ["Top", "Shirt"],
+    "category": ["sale", "Shirt","Top"],
     "colors": [
       {
         "name": "Black",
@@ -122,8 +150,7 @@
     "stock": 50,
     "brand": "Snitch",
     "isLuxe": false,
-    "isPlusSizeAvailable": true,
-    "isOnSale": true
+    "isPlusSizeAvailable": true
   },
   {
     "id": "5",
@@ -134,7 +161,7 @@
     "discountPrice": 1799,
     "rating": 5,
     "ratingCount": 4,
-    "category": ["Bottom", "Jeans"],
+    "category": ["sale", "Jeans","Bottom"],
     "colors": [
       {
         "name": "Black",
@@ -164,7 +191,7 @@
     "discountPrice": 1199,
     "rating": 5,
     "ratingCount": 4,
-    "category": ["Top", "T-Shirt"],
+    "category": ["sale", "T-Shirt","Top"],
     "colors": [
       {
         "name": "Black",
@@ -182,8 +209,7 @@
     "stock": 50,
     "brand": "Snitch",
     "isLuxe": false,
-    "isPlusSizeAvailable": true,
-    "isOnSale": true
+    "isPlusSizeAvailable": true
   },
 
 
@@ -198,7 +224,7 @@
     "discountPrice": 1593,
     "rating": 4,
     "ratingCount": 80,
-    "category": ["Accessories", "Bag"],
+    "category": ["Accssories","Bag"],
     "colors": [
       {
         "name": "Black",
@@ -641,3 +667,4 @@
     "isPlusSizeAvailable": true
   }
 ]
+
