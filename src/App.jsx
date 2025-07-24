@@ -8,7 +8,7 @@ import ScrollToTop from './components/ScrollToTop'
 
 // Lazy load heavy components for better performance
 const Hero = React.lazy(() => import('./components/hero'))
-const Categories = React.lazy(() => import('./components/categories'))
+const Categories = React.lazy(() => import('./components/Categories'))
 const Footer = React.lazy(() => import('./components/Footer'))
 const Collection = React.lazy(() => import('./components/collection'))
 
