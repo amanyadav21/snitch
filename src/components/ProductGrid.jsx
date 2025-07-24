@@ -121,46 +121,46 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Page Header */}
-      <div className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">{pageTitle}</h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+      <div className="bg-white py-12 sm:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">{pageTitle}</h1>
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
             {pageDescription}
           </p>
-          <div className="mt-4 text-sm text-gray-500">
+          <div className="mt-4 text-sm sm:text-base text-gray-500">
             {filteredProducts.length} products found
           </div>
         </div>
       </div>
 
       {/* Products Grid */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {filteredProducts.length === 0 ? (
           <div className="text-center py-16">
             <h3 className="text-xl text-gray-600 mb-4">No products found</h3>
             <p className="text-gray-500">Check back soon for new arrivals!</p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {filteredProducts.map((product) => (
               <div
                 key={product.id}
                 onClick={() => openProductDetail(product)}
-                className="bg-white rounded-lg shadow-md hover:shadow-xl cursor-pointer group"
+                className="bg-white rounded-lg shadow-md hover:shadow-xl cursor-pointer group transition-all duration-300"
               >
                 {/* Product Image */}
                 <div className="relative overflow-hidden rounded-t-lg">
                   <img
                     src={product.colors?.[0]?.images?.[0] || product.images?.[0] || '/placeholder-image.jpg'}
                     alt={product.title || product.name}
-                    className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-60 sm:h-72 md:h-80 lg:h-80 object-cover group-hover:scale-105 transition-transform duration-300"
                     onError={(e) => {
                       e.target.src = 'https://via.placeholder.com/400x500/f3f4f6/9ca3af?text=No+Image';
                     }}
                   />
                   
                   {/* Badges */}
-                  <div className="absolute top-4 left-4 flex flex-col space-y-2">
+                  <div className="absolute top-3 sm:top-4 left-3 sm:left-4 flex flex-col space-y-2">
                     {category === 'Sale' && (
                       <span className="bg-red-600 text-white px-2 py-1 text-xs font-semibold rounded">
                         SALE
@@ -179,15 +179,15 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                   </div>
 
                   {/* Quick Actions */}
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-3 sm:top-4 right-3 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         handleAddToWishlist();
                       }}
-                      className="bg-white p-2 rounded-full shadow-md hover:bg-gray-50"
+                      className="bg-white p-1.5 sm:p-2 rounded-full shadow-md hover:bg-gray-50"
                     >
-                      <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                       </svg>
                     </button>
@@ -195,8 +195,8 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                 </div>
 
                 {/* Product Info */}
-                <div className="p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
+                <div className="p-4 sm:p-5 lg:p-6">
+                  <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                     {product.title || product.name}
                   </h3>
                   
@@ -207,26 +207,26 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                         {[...Array(5)].map((_, i) => (
                           <svg
                             key={i}
-                            className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-current' : 'text-gray-300'}`}
+                            className={`w-3 h-3 sm:w-4 sm:h-4 ${i < Math.floor(product.rating) ? 'fill-current' : 'text-gray-300'}`}
                             viewBox="0 0 20 20"
                           >
                             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                           </svg>
                         ))}
                       </div>
-                      <span className="text-sm text-gray-500 ml-2">
+                      <span className="text-xs sm:text-sm text-gray-500 ml-2">
                         ({product.ratingCount || product.rating})
                       </span>
                     </div>
                   )}
 
                   {/* Price */}
-                  <div className="flex items-center space-x-2 mb-4">
-                    <span className="text-xl font-bold text-gray-900">
+                  <div className="flex items-center space-x-2 mb-3 sm:mb-4">
+                    <span className="text-lg sm:text-xl font-bold text-gray-900">
                       ₹{product.price}
                     </span>
                     {product.discountPrice && product.discountPrice !== product.price && (
-                      <span className="text-sm text-gray-500 line-through">
+                      <span className="text-xs sm:text-sm text-gray-500 line-through">
                         ₹{product.discountPrice}
                       </span>
                     )}
@@ -234,11 +234,11 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
 
                   {/* Colors */}
                   {(product.colors || product.colors) && (
-                    <div className="flex space-x-2 mb-4">
+                    <div className="flex space-x-1 sm:space-x-2 mb-3 sm:mb-4">
                       {(product.colors || []).slice(0, 4).map((color, index) => (
                         <div
                           key={index}
-                          className="w-6 h-6 rounded-full border-2 border-gray-300"
+                          className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-gray-300"
                           style={{ backgroundColor: color.hex || color }}
                           title={color.name || color}
                         />
@@ -252,7 +252,7 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                   )}
 
                   {/* Category */}
-                  <div className="text-sm text-gray-500 mb-4">
+                  <div className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4">
                     {Array.isArray(product.category) ? product.category.join(', ') : product.category}
                   </div>
 
@@ -263,24 +263,26 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                         e.stopPropagation();
                         handleAddToWishlist(product);
                       }}
-                      className="flex-1 bg-white border border-gray-300 text-gray-900 py-2 px-4 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center"
+                      className="flex-1 bg-white border border-gray-300 text-gray-900 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center"
                     >
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                       </svg>
-                      Wishlist
+                      <span className="hidden sm:inline">Wishlist</span>
+                      <span className="sm:hidden">❤</span>
                     </button>
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
                         handleAddToBag(product);
                       }}
-                      className="flex-1 bg-black text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center"
+                      className="flex-1 bg-black text-white py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center"
                     >
-                      <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                       </svg>
-                      Add to Bag
+                      <span className="hidden sm:inline">Add to Bag</span>
+                      <span className="sm:hidden">🛒</span>
                     </button>
                   </div>
                 </div>

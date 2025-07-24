@@ -85,18 +85,18 @@ const Collection = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="bg-white py-5">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold text-neutral-900 mb-4">Our Collection</h1>
-          <p className="text-lg text-red-900 max-w-2xl mx-auto">
+      <div className="bg-white py-8 sm:py-12 lg:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-4 sm:mb-6">Our Collection</h1>
+          <p className="text-base sm:text-lg md:text-xl text-red-900 max-w-2xl mx-auto px-4 sm:px-0">
             Discover our premium range of clothing designed for the modern individual.
             Quality, style, and comfort - all in one place.
           </p>
         </div>
       </div>
 
-      <div className="max-w-8xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {products.map((product) => (
             <div
               key={product.id}
@@ -107,36 +107,36 @@ const Collection = () => {
                 <img
                   src={product.colors?.[0]?.images?.[0] || product.images?.[0] || 'https://via.placeholder.com/400x500/f3f4f6/9ca3af?text=No+Image'}
                   alt={product.title || product.name}
-                  className="w-full h-80 object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                  className="w-full h-60 sm:h-72 md:h-80 lg:h-80 object-cover object-top group-hover:scale-105 transition-transform duration-300"
                   onError={(e) => {
                     e.target.src = 'https://via.placeholder.com/400x500/f3f4f6/9ca3af?text=No+Image';
                   }}
                 />
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute top-3 sm:top-4 right-3 sm:right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       handleAddToWishlist();
                     }}
-                    className="bg-white p-2 rounded-full shadow-md hover:bg-gray-50"
+                    className="bg-white p-1.5 sm:p-2 rounded-full shadow-md hover:bg-gray-50"
                   >
-                    <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
                   </button>
                 </div>
               </div>
 
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-black mb-2 line-clamp-2">
+              <div className="p-3 sm:p-4 lg:p-5">
+                <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-black mb-2 line-clamp-2">
                   {product.title || product.name}
                 </h3>
-                <div className="flex items-center space-x-2 mb-4">
-                  <span className="text-xl font-bold text-red-900">
+                <div className="flex items-center space-x-2 mb-3 sm:mb-4">
+                  <span className="text-lg sm:text-xl font-bold text-red-900">
                     ₹{product.price}
                   </span>
                   {product.discountPrice && product.discountPrice !== product.price && (
-                    <span className="text-sm text-gray-500 line-through">
+                    <span className="text-xs sm:text-sm text-gray-500 line-through">
                       ₹{product.discountPrice}
                     </span>
                   )}
@@ -149,24 +149,26 @@ const Collection = () => {
                       e.stopPropagation();
                       handleAddToWishlist(product);
                     }}
-                    className="flex-1 bg-white border border-gray-300 text-gray-900 py-2 px-4 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center"
+                    className="flex-1 bg-white border border-gray-300 text-gray-900 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center"
                   >
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
-                    Wishlist
+                    <span className="hidden sm:inline">Wishlist</span>
+                    <span className="sm:hidden">❤</span>
                   </button>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       handleAddToBag(product);
                     }}
-                    className="flex-1 bg-black text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center"
+                    className="flex-1 bg-black text-white py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center"
                   >
-                    <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
-                    Add to Bag
+                    <span className="hidden sm:inline">Add to Bag</span>
+                    <span className="sm:hidden">🛒</span>
                   </button>
                 </div>
               </div>

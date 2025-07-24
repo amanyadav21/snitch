@@ -1,0 +1,216 @@
+/* Enhanced Responsive Design Utilities for SNITCH */
+
+/* Custom responsive breakpoints and utilities */
+@media (max-width: 320px) {
+  /* Extra small devices - iPhone SE, old Android phones */
+  .text-responsive-xs {
+    font-size: 0.75rem !important;
+  }
+  
+  .p-responsive-xs {
+    padding: 0.5rem !important;
+  }
+  
+  .gap-responsive-xs {
+    gap: 0.25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Small mobile devices */
+  .container-responsive-sm {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .text-responsive-sm {
+    font-size: 0.875rem;
+  }
+  
+  /* Improved touch targets for mobile */
+  .btn-touch-friendly {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing for mobile cards */
+  .card-mobile {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Standard mobile devices */
+  .grid-mobile-stack {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .text-mobile-center {
+    text-align: center;
+  }
+  
+  /* Mobile-friendly navigation */
+  .nav-mobile {
+    flex-direction: column;
+    width: 100%;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  /* Large mobile / small tablet */
+  .grid-tablet-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .text-tablet-adjust {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  /* Tablet devices */
+  .grid-tablet-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .container-tablet {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1440px) {
+  /* Desktop devices */
+  .grid-desktop-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+  .container-desktop {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+}
+
+@media (min-width: 1441px) {
+  /* Large desktop devices */
+  .grid-large-5 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  
+  .container-large {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+/* Custom utility classes for better responsive behavior */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Responsive image handling */
+.img-responsive {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.img-aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+.img-aspect-portrait {
+  aspect-ratio: 3 / 4;
+}
+
+/* Enhanced hover effects for touch devices */
+@media (hover: hover) {
+  .hover-scale:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease-in-out;
+  }
+}
+
+/* Focus styles for accessibility */
+.focus-outline:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading states */
+.loading-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .auto-dark {
+    background-color: #1f2937;
+    color: #f9fafb;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-friendly {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  .landscape-mobile-adjust {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .high-dpi-text {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
