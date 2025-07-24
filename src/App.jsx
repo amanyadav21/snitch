@@ -11,6 +11,7 @@ const Hero = React.lazy(() => import('./components/hero'))
 const Categories = React.lazy(() => import('./components/Categories'))
 const Footer = React.lazy(() => import('./components/Footer'))
 const LifestyleSection = React.lazy(() => import('./components/LifestyleSection'))
+const ProductShowcase = React.lazy(() => import('./components/ProductShowcase'))
 const Collection = React.lazy(() => import('./components/collection'))
 
 // Lazy load page components
@@ -42,8 +43,9 @@ const AppContent = () => {
             <Suspense fallback={<LoadingSpinner message="Loading home..." />}>
               <Hero />
               <Categories />
-              <Collection />
+              <ProductShowcase />
               <LifestyleSection />
+              <Collection />
             </Suspense>
           } />
           <Route path="/sale" element={
