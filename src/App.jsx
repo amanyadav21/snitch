@@ -10,6 +10,7 @@ import ScrollToTop from './components/ScrollToTop'
 const Hero = React.lazy(() => import('./components/hero'))
 const Categories = React.lazy(() => import('./components/Categories'))
 const Footer = React.lazy(() => import('./components/Footer'))
+const LifestyleSection = React.lazy(() => import('./components/LifestyleSection'))
 const Collection = React.lazy(() => import('./components/collection'))
 
 // Lazy load page components
@@ -42,6 +43,7 @@ const AppContent = () => {
               <Hero />
               <Categories />
               <Collection />
+              <LifestyleSection />
             </Suspense>
           } />
           <Route path="/sale" element={
