@@ -4,6 +4,7 @@ import Navbar from './components/navbar'
 import LoadingSpinner from './components/LoadingSpinner'
 import ErrorBoundary from './components/ErrorBoundary'
 import ToastContainer from './components/ToastNotification'
+import ScrollToTop from './components/ScrollToTop'
 
 // Lazy load heavy components for better performance
 const Hero = React.lazy(() => import('./components/hero'))
@@ -31,6 +32,7 @@ const AppContent = () => {
 
   return (
     <div>
+      <ScrollToTop />
       <Navbar />
       <Suspense fallback={<LoadingSpinner message="Loading page..." />}>
         <Routes>
