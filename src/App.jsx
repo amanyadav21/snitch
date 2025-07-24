@@ -43,9 +43,9 @@ const AppContent = () => {
             <Suspense fallback={<LoadingSpinner message="Loading home..." />}>
               <Hero />
               <Categories />
+              <Collection />
               <ProductShowcase />
               <LifestyleSection />
-              <Collection />
             </Suspense>
           } />
           <Route path="/sale" element={
