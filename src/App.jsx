@@ -18,6 +18,7 @@ const Bottom = React.lazy(() => import('./components/pages/Bottom'))
 const Accessories = React.lazy(() => import('./components/pages/Accessories'))
 const Wishlist = React.lazy(() => import('./components/pages/Wishlist'))
 const AddToBag = React.lazy(() => import('./components/pages/Addtobag'))
+const Account = React.lazy(() => import('./components/pages/Account'))
 const NotFoundPage = React.lazy(() => import('./components/pages/Notfoundpage'))
 
 // Component to handle conditional footer rendering
@@ -25,7 +26,7 @@ const AppContent = () => {
   const location = useLocation();
   
   // Check if current path doesn't match any defined routes (404 page)
-  const definedRoutes = ['/', '/sale', '/top', '/bottom', '/accessories', '/wishlist', '/bag'];
+  const definedRoutes = ['/', '/sale', '/top', '/bottom', '/accessories', '/wishlist', '/bag', '/account'];
   const isNotFoundPage = !definedRoutes.includes(location.pathname);
 
   return (
@@ -68,6 +69,11 @@ const AppContent = () => {
           <Route path="/bag" element={
             <Suspense fallback={<LoadingSpinner message="Loading shopping bag..." />}>
               <AddToBag />
+            </Suspense>
+          } />
+          <Route path="/account" element={
+            <Suspense fallback={<LoadingSpinner message="Loading account..." />}>
+              <Account />
             </Suspense>
           } />
           <Route path="*" element={

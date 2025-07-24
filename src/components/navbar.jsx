@@ -97,9 +97,13 @@ const Navbar = () => {
           {/* Right Side - Account, Wishlist, Cart */}
           <div className='flex items-center space-x-1'>
             {/* Account Icon */}
-            <button className='hidden sm:flex p-2.5 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200 group'>
+            <Link
+              to="/account"
+              className='hidden sm:flex p-2.5 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200 group'
+              aria-label="My Account"
+            >
               <FiUser className='h-5 w-5 group-hover:scale-110 transition-transform duration-200' />
-            </button>
+            </Link>
 
             {/* Wishlist */}
             <Link
@@ -182,10 +186,14 @@ const Navbar = () => {
 
             {/* Mobile Account Actions */}
             <div className='border-t border-gray-700 pt-4 mt-4'>
-              <button className='flex items-center w-full px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200'>
+              <Link
+                to="/account"
+                onClick={() => setIsOpen(false)}
+                className='flex items-center w-full px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200'
+              >
                 <FiUser className='h-5 w-5 mr-3' />
                 <span>My Account</span>
-              </button>
+              </Link>
             </div>
           </div>
         </div>
