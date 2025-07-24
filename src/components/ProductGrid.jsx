@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const ProductGrid = ({ category, pageTitle, pageDescription }) => {
+  const navigate = useNavigate();
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -63,11 +65,8 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
   }, [category]);
 
   const openProductDetail = (product) => {
-    setSelectedProduct(product);
-    setSelectedImage(0);
-    setSelectedColor(0);
-    setSelectedSize('');
-    document.body.style.overflow = 'hidden';
+    // Navigate to product details page
+    navigate(`/product/${product.id}`);
   };
 
   const closeProductDetail = () => {
