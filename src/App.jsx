@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/navbar'
 import Hero from './components/hero'
 import Categories from './components/categories'
@@ -13,29 +13,43 @@ import Wishlist from './components/pages/Wishlist'
 import AddToBag from './components/pages/Addtobag'
 import NotFoundPage from './components/pages/Notfoundpage'
 
+// Component to handle conditional footer rendering
+const AppContent = () => {
+  const location = useLocation();
+  
+  // Check if current path doesn't match any defined routes (404 page)
+  const definedRoutes = ['/', '/sale', '/top', '/bottom', '/accessories', '/wishlist', '/bag'];
+  const isNotFoundPage = !definedRoutes.includes(location.pathname);
+
+  return (
+    <div>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Hero />
+            <Categories />
+            <Collection />
+          </>
+        } />
+        <Route path="/sale" element={<Sale />} />
+        <Route path="/top" element={<Top />} />
+        <Route path="/bottom" element={<Bottom />} />
+        <Route path="/accessories" element={<Accessories />} />
+        <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/bag" element={<AddToBag />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+      {/* Conditionally render Footer - hide on 404 page */}
+      {!isNotFoundPage && <Footer />}
+    </div>
+  );
+};
+
 const App = () => {
   return (
     <Router>
-      <div>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={
-            <>
-              <Hero />
-              <Categories />
-              <Collection />
-            </>
-          } />
-          <Route path="/sale" element={<Sale />} />
-          <Route path="/top" element={<Top />} />
-          <Route path="/bottom" element={<Bottom />} />
-          <Route path="/accessories" element={<Accessories />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/bag" element={<AddToBag />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-        <Footer />
-      </div>
+      <AppContent />
     </Router>
   )
 }

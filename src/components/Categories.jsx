@@ -1,9 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Categories = () => {
   const scrollRef = useRef(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
+  const navigate = useNavigate()
 
   const categories = [
     {
@@ -73,10 +75,6 @@ const Categories = () => {
     }
   }, [])
 
-  const handleCategoryClick = (redirect) => {
-    window.location.href = redirect
-  }
-
   const scrollLeft = () => {
     if (scrollRef.current) {
       scrollRef.current.scrollBy({
@@ -93,6 +91,10 @@ const Categories = () => {
         behavior: 'smooth'
       })
     }
+  }
+
+  const handleCategoryClick = (redirect) => {
+    navigate(redirect)
   }
 
   return (
@@ -149,7 +151,7 @@ const Categories = () => {
             WebkitScrollbar: 'none'
           }}
         >
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <div 
               key={category.id} 
               className="group relative overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-xl flex-shrink-0 w-80 border border-gray-100"
