@@ -10,8 +10,8 @@ const ProductShowcase = () => {
       name: 'SNITCH Air Classic',
       category: 'Premium Sneakers',
       description: 'The perfect blend of street style and premium comfort. Designed for the modern individual who demands both performance and aesthetics.',
-      mainImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753343840/download_da2kxx.jpg',
-      detailImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753343841/download_2_itnhvj.jpg',
+      mainImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350931/download_10_z7gzcx.jpg',
+      detailImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350931/download_10_z7gzcx.jpg',
       features: ['Premium leather construction', 'Air cushioning technology', 'Anti-slip rubber sole', 'Breathable mesh lining', 'Handcrafted in India'],
       colors: ['Burgundy Red', 'Classic White', 'Midnight Black'],
       price: '₹4,999',
@@ -22,8 +22,8 @@ const ProductShowcase = () => {
       name: 'SNITCH Urban Runner',
       category: 'Athletic Sneakers',
       description: 'Built for the city hustle. These sneakers combine cutting-edge technology with urban aesthetics for all-day comfort.',
-      mainImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753343842/download_1_ekqwsl.jpg',
-      detailImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753343837/download_3_rp7qum.jpg',
+      mainImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350929/download_11_xfe0ck.jpg',
+      detailImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350929/download_11_xfe0ck.jpg',
       features: ['Lightweight EVA midsole', 'Moisture-wicking interior', 'Reflective accents', 'Eco-friendly materials', 'Memory foam insole'],
       colors: ['Storm Grey', 'Electric Blue', 'Neon Green'],
       price: '₹3,799',
@@ -34,15 +34,53 @@ const ProductShowcase = () => {
       name: 'SNITCH Elite Sport',
       category: 'Performance Sneakers',
       description: 'Engineered for peak performance. Whether you\'re hitting the gym or the streets, these sneakers deliver unmatched support.',
-      mainImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753343836/men_s_fashion_rtaye4.jpg',
-      detailImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753343838/Masculinity_Quotes__Empowering_Words_For_The_Modern_Man_7_c1ymwi.jpg',
+      mainImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350934/download_9_kbaipu.jpg',
+      detailImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350934/download_9_kbaipu.jpg',
       features: ['Advanced shock absorption', 'Reinforced heel support', 'Quick-dry technology', 'Ergonomic design', 'Professional grade materials'],
       colors: ['Titanium Silver', 'Carbon Black', 'Royal Blue'],
       price: '₹5,499',
       badge: 'LIMITED EDITION'
+    },
+    // New products added below
+    {
+      id: 4,
+      name: 'SNITCH Legend Court',
+      category: 'Casual Sneakers',
+      description: 'Inspired by classic court designs with a modern twist. Perfect for casual outings and everyday comfort.',
+      mainImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350944/Legend_Court_Sneakers_fegdym.jpg',
+      detailImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350949/download_5_allm0n.jpg',
+      features: ['Vintage-inspired design', 'Soft suede upper', 'Cushioned footbed', 'Flexible outsole', 'Breathable fabric lining'],
+      colors: ['Cream White', 'Navy Blue', 'Olive Green'],
+      price: '₹3,299',
+      badge: 'NEW ARRIVAL'
+    },
+    {
+      id: 5,
+      name: 'SNITCH Pure Sense',
+      category: 'Minimalist Sneakers',
+      description: 'Less is more. These minimalist sneakers offer clean lines and understated elegance for the modern wardrobe.',
+      mainImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350941/Pure_Sense_nj9rzs.jpg',
+      detailImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350948/download_6_u0izl5.jpg',
+      features: ['Sleek silhouette', 'Premium canvas upper', 'Ultra-lightweight', 'Arch support', 'Versatile styling'],
+      colors: ['Pure White', 'Charcoal Gray', 'Soft Beige'],
+      price: '₹3,899',
+      badge: 'MINIMALIST'
+    },
+    {
+      id: 6,
+      name: 'SNITCH Street Pro',
+      category: 'Urban Sneakers',
+      description: 'Designed for urban explorers who value both style and durability in their daily adventures.',
+      mainImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350946/download_7_midxei.jpg',
+      detailImage: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753350946/download_7_midxei.jpg',
+      features: ['Reinforced toe cap', 'Textured rubber sole', 'Padded collar', 'Quick-lace system', 'Water-resistant finish'],
+      colors: ['Jet Black', 'Cement Gray', 'Military Green'],
+      price: '₹4,299',
+      badge: 'URBAN'
     }
   ];
 
+  // Rest of the component code remains the same...
   const handleProductClick = (product) => {
     setSelectedProduct(product);
   };
@@ -62,8 +100,6 @@ const ProductShowcase = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <div className="text-center mb-20">
-    
-          
           <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
             Crafted in India with global standards. Every step tells a story of
             <span className="font-semibold text-gray-900"> quality, comfort, and style.</span>
@@ -71,7 +107,7 @@ const ProductShowcase = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 mb-20">
           {showcaseProducts.map((product, index) => (
             <div
               key={product.id}
