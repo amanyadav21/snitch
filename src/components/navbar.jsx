@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { href, Link, useLocation } from 'react-router-dom';
 import { FiShoppingCart, FiMenu, FiX, FiUser } from 'react-icons/fi';
 
 const Navbar = () => {
@@ -15,6 +15,7 @@ const Navbar = () => {
     { name: 'Top', href: '/top' },
     { name: 'Bottom', href: '/bottom' },
     { name: 'Accessories', href: '/accessories' },
+    { name: 'Upcoming', href: '/upcoming',},
   ];
 
   // Update item counts from localStorage
@@ -52,10 +53,10 @@ const Navbar = () => {
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-black/95 backdrop-blur-md shadow-lg' : 'bg-black'
+      scrolled ? 'bg-black backdrop-blur-md shadow-lg' : 'bg-black'
     }`}>
       <nav className='max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8'>
-        <div className='flex justify-between items-center h-14 sm:h-16 lg:h-18'>
+        <div className='flex justify-between items-center h-14 sm:h-16 lg:h-16'>
           {/* Brand Logo */}
           <div className='flex-shrink-0'>
             <Link 
@@ -75,8 +76,8 @@ const Navbar = () => {
                 to={link.href}
                 className={`relative px-2 lg:px-4 py-2 text-xs sm:text-sm lg:text-base font-medium transition-all duration-200 rounded-lg group ${
                   isActive(link.href)
-                    ? 'text-white bg-gray-800'
-                    : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
+                    ? 'text-white bg-neutral-700'
+                    : 'text-white hover:text-white hover:bg-neutral-800'
                 } ${link.isSpecial ? 'text-red-400 hover:text-red-300' : ''}`}
               >
                 {link.name}
