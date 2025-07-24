@@ -1,9 +1,9 @@
 import React from 'react';
-import ProductGrid from '../ProductGrid';
+import LazyProductGrid from '../LazyProductGrid';
 
 const Bottom = () => {
   return (
-    <ProductGrid 
+    <LazyProductGrid 
       category="Bottom"
       pageTitle="Bottoms Collection"
       pageDescription="Complete your look with our stylish range of jeans, trousers, chinos, and more. Comfort meets style."
