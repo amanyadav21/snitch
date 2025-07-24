@@ -7,7 +7,7 @@ const Footer = () => {
     e.preventDefault();
     console.log('Newsletter subscription:', email);
     setEmail('');
-    alert('Thank you for subscribing to our newsletter!');
+    window.showToast && window.showToast('Thank you for subscribing to our newsletter!', 'success');
   };
 
   return (

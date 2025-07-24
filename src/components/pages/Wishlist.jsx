@@ -41,7 +41,7 @@ const Wishlist = () => {
     }
     
     localStorage.setItem('shoppingBag', JSON.stringify(existingBag));
-    alert(`Added ${product.title} to bag!`);
+    window.showToast && window.showToast(`Added ${product.title} to bag!`, 'cart');
   };
 
   const clearWishlist = () => {

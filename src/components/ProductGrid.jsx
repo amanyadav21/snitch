@@ -80,10 +80,10 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
 
   const handleAddToCart = () => {
     if (!selectedSize) {
-      alert('Please select a size');
+      window.showToast && window.showToast('Please select a size', 'error');
       return;
     }
-    alert(`Added ${selectedProduct.title} (Size: ${selectedSize}) to cart!`);
+    window.showToast && window.showToast(`Added ${selectedProduct.title} (Size: ${selectedSize}) to cart!`, 'cart');
   };
 
   const handleAddToWishlist = (product = selectedProduct) => {
@@ -94,14 +94,14 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
     const productExists = existingWishlist.find(item => item.id === product.id);
     
     if (productExists) {
-      alert(`${product.title} is already in your wishlist!`);
+      window.showToast && window.showToast(`${product.title} is already in your wishlist!`, 'error');
       return;
     }
     
     // Add product to wishlist
     const updatedWishlist = [...existingWishlist, product];
     localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
-    alert(`Added ${product.title} to wishlist!`);
+    window.showToast && window.showToast(`Added ${product.title} to wishlist!`, 'wishlist');
   };
 
   const handleAddToBag = (product) => {
@@ -130,7 +130,7 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
     }
     
     localStorage.setItem('shoppingBag', JSON.stringify(existingBag));
-    alert(`Added ${product.title} to bag!`);
+    window.showToast && window.showToast(`Added ${product.title} to bag!`, 'cart');
   };
 
   if (loading) {

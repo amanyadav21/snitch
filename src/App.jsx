@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Navbar from './components/navbar'
 import LoadingSpinner from './components/LoadingSpinner'
 import ErrorBoundary from './components/ErrorBoundary'
+import ToastContainer from './components/ToastNotification'
 
 // Lazy load heavy components for better performance
 const Hero = React.lazy(() => import('./components/hero'))
@@ -91,6 +92,7 @@ const App = () => {
     <ErrorBoundary>
       <Router>
         <AppContent />
+        <ToastContainer />
       </Router>
     </ErrorBoundary>
   )

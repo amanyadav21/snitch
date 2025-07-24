@@ -63,7 +63,7 @@ const AddToBag = () => {
     
     // Remove from bag
     removeFromBag(product.id);
-    alert(`Moved ${product.title} to wishlist!`);
+    window.showToast && window.showToast(`Moved ${product.title} to wishlist!`, 'wishlist');
   };
 
   return (
