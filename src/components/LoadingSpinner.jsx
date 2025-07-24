@@ -1,24 +1,26 @@
 import React from 'react';
+import Lottie from 'lottie-react';
+import loadingAnimation from '../assets/loding-animation.json';
 
 const LoadingSpinner = ({ message = "Loading..." }) => {
   return (
-    <div className="min-h-screen bg-black flex items-center justify-center">
-      <div className="text-center">
-        {/* Animated Spinner */}
-        <div className="relative">
-          <div className="w-16 h-16 border-4 border-gray-700 border-t-green-500 rounded-full animate-spin mx-auto mb-4"></div>
-          <div className="w-12 h-12 border-4 border-gray-800 border-t-green-400 rounded-full animate-spin absolute top-2 left-1/2 transform -translate-x-1/2" style={{ animationDirection: 'reverse' }}></div>
+    <div className="min-h-screen bg-black flex items-center justify-center p-4">
+      <div className="text-center space-y-6">
+        {/* Lottie Animation */}
+        <div className="mx-auto w-32 h-32">
+          <Lottie 
+            animationData={loadingAnimation}
+            loop={true}
+            autoplay={true}
+            style={{ width: '100%', height: '100%' }}
+          />
         </div>
         
-        {/* Loading Text */}
-        <div className="text-white">
-          <h2 className="text-2xl font-bold mb-2">SNITCH</h2>
-          <p className="text-gray-400 text-lg">{message}</p>
-          <div className="flex justify-center space-x-1 mt-4">
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-bounce"></div>
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
-            <div className="w-2 h-2 bg-green-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
-          </div>
+        {/* Brand & Message */}
+        <div className="space-y-3">
+          <h2 className="text-5xl font-thin text-white tracking-wider">SNITCH</h2>
+          <p className='text-red-700 text-1xl font-semibold '>Made In India</p>
+          {/* <p className="text-gray-300 text-sm font-medium">{message}</p> */}
         </div>
       </div>
     </div>
@@ -26,3 +28,5 @@ const LoadingSpinner = ({ message = "Loading..." }) => {
 };
 
 export default LoadingSpinner;
+
+// export default LoadingSpinner;
