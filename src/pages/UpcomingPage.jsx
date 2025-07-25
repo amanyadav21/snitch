@@ -3,17 +3,14 @@ import ProductShowcase from '../components/sections/ProductShowcase';
 
 const Upcoming = () => {
   return (
-    <div className="min-h-screen">
-      {/* Page Header */}
-      <div className="bg-gradient-to-r from-gray-900 to-black text-white py-20 mt-16">
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <div className="bg-white pt-20 sm:pt-24 lg:pt-28 pb-8 sm:pb-12 lg:pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-            Upcoming Collection
-          </h1>
-          <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto">
-            Get ready for the next generation of premium sneakers. 
-            <span className="text-red-400"> Coming Soon.</span>
-          </p>
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[120px] font-bold text-black/40 mb-2 sm:mb-4">Upcoming Collection</h1>
+          <div className="mt-2 sm:mt-4 text-sm sm:text-base text-gray-500">
+            Get ready for the next generation of premium sneakers. <span className="text-red-400">Coming Soon.</span>
+          </div>
         </div>
       </div>
 
