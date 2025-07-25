@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const AddToBag = () => {
   const [bagItems, setBagItems] = useState([]);
@@ -131,25 +132,29 @@ const AddToBag = () => {
                     className="bg-white rounded-lg shadow-md p-6"
                   >
                     <div className="flex space-x-4">
-                      {/* Product Image */}
+                      {/* Product Image - Clickable */}
                       <div className="flex-shrink-0">
-                        <img
-                          src={item.colors?.[0]?.images?.[0] || item.images?.[0] || 'https://via.placeholder.com/150x200/f3f4f6/9ca3af?text=No+Image'}
-                          alt={item.title || item.name}
-                          className="w-24 h-32 object-cover rounded-md"
-                          onError={(e) => {
-                            e.target.src = 'https://via.placeholder.com/150x200/f3f4f6/9ca3af?text=No+Image';
-                          }}
-                        />
+                        <Link to={`/product/${item.id}`}>
+                          <img
+                            src={item.colors?.[0]?.images?.[0] || item.images?.[0] || 'https://via.placeholder.com/150x200/f3f4f6/9ca3af?text=No+Image'}
+                            alt={item.title || item.name}
+                            className="w-24 h-32 object-cover rounded-md hover:opacity-80 transition-opacity duration-200 cursor-pointer"
+                            onError={(e) => {
+                              e.target.src = 'https://via.placeholder.com/150x200/f3f4f6/9ca3af?text=No+Image';
+                            }}
+                          />
+                        </Link>
                       </div>
 
                       {/* Product Details */}
                       <div className="flex-1">
                         <div className="flex justify-between">
                           <div>
-                            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-                              {item.title || item.name}
-                            </h3>
+                            <Link to={`/product/${item.id}`}>
+                              <h3 className="text-lg font-semibold text-gray-900 mb-2 hover:text-gray-700 transition-colors duration-200 cursor-pointer">
+                                {item.title || item.name}
+                              </h3>
+                            </Link>
                             
                             {/* Price */}
                             <div className="flex items-center space-x-2 mb-4">
