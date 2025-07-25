@@ -165,7 +165,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className='md:hidden p-2 lg:p-2.5 text-gray-700 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200'
+              className='md:hidden p-2 lg:p-2.5 text-black hover:text-white hover:bg-black rounded-full transition-all duration-200'
               aria-label="Toggle menu"
             >
               {isOpen ? (
@@ -181,7 +181,7 @@ const Navbar = () => {
         <div className={`md:hidden transition-all duration-300 ease-in-out ${
           isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
         } overflow-hidden`}>
-          <div className='px-2 pt-2 pb-6 space-y-1 bg-gray-900/50 backdrop-blur-sm rounded-lg mt-2'>
+          <div className='px-2 pt-2 pb-6 space-y-1 bg-white backdrop-blur-sm rounded-lg mt-2'>
             {/* Mobile Links */}
             {mainLinks.map((link) => (
               <Link
@@ -190,13 +190,13 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
                 className={`flex items-center justify-between px-3 sm:px-4 py-3 text-base font-medium transition-all duration-200 rounded-lg ${
                   isActive(link.href)
-                    ? 'text-white bg-gray-800'
-                    : 'text-gray-800 hover:text-white hover:bg-gray-800/50'
-                } ${link.isSpecial ? 'text-red-500 hover:text-red-400' : ''}`}
+                    ? 'text-white bg-black'
+                    : 'text-gray-800 hover:text-white hover:bg-black'
+                } ${link.isSpecial ? 'text-[] hover:text-red-400' : ''}`}
               >
                 <span className="text-sm sm:text-base">{link.name}</span>
                 {link.isSpecial && (
-                  <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full font-bold">
+                  <span className="bg-[#D6FF00] text-black text-xs px-2 py-1 rounded-full font-medium">
                     HOT
                   </span>
                 )}
@@ -207,11 +207,11 @@ const Navbar = () => {
             ))}
 
             {/* Mobile Account Actions */}
-            <div className='border-t border-gray-700 pt-4 mt-4'>
+            <div className='border-t border-black pt-4 mt-4'>
               <Link
                 to="/account"
                 onClick={() => setIsOpen(false)}
-                className='flex items-center w-full px-3 sm:px-4 py-3 text-gray-800 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200'
+                className='flex items-center w-full px-3 sm:px-4 py-3 text-black hover:text-white hover:bg-black rounded-lg transition-all duration-200'
               >
                 <FiUser className='h-5 w-5 mr-3' />
                 <span className="text-sm sm:text-base">My Account</span>
