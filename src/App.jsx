@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/layout/Navbar'
-import LoadingSpinner from './components/ui/LoadingSpinner'
+import { PageSkeleton } from './components/ui/SkeletonLoader'
 import ErrorBoundary from './components/ui/ErrorBoundary'
 import ToastContainer from './components/ui/ToastNotification'
 import ScrollToTop from './components/layout/ScrollToTop'
@@ -34,60 +34,60 @@ const AppContent = () => {
     <div>
       <ScrollToTop />
       <Navbar />
-      <Suspense fallback={<LoadingSpinner message="Loading page..." />}>
+      <Suspense fallback={<PageSkeleton />}>
         <Routes>
           <Route path="/" element={
-            <Suspense fallback={<LoadingSpinner message="Loading home..." />}>
+            <Suspense fallback={<PageSkeleton />}>
               <HomePage />
             </Suspense>
           } />
           <Route path="/sale" element={
-            <Suspense fallback={<LoadingSpinner message="Loading sale products..." />}>
+            <Suspense fallback={<PageSkeleton />}>
               <SalePage />
             </Suspense>
           } />
           <Route path="/top" element={
-            <Suspense fallback={<LoadingSpinner message="Loading top wear..." />}>
+            <Suspense fallback={<PageSkeleton />}>
               <TopPage />
             </Suspense>
           } />
           <Route path="/bottom" element={
-            <Suspense fallback={<LoadingSpinner message="Loading bottom wear..." />}>
+            <Suspense fallback={<PageSkeleton />}>
               <BottomPage />
             </Suspense>
           } />
           <Route path="/accessories" element={
-            <Suspense fallback={<LoadingSpinner message="Loading accessories..." />}>
+            <Suspense fallback={<PageSkeleton />}>
               <AccessoriesPage />
             </Suspense>
           } />
           <Route path="/upcoming" element={
-            <Suspense fallback={<LoadingSpinner message="Loading upcoming collection..." />}>
+            <Suspense fallback={<PageSkeleton />}>
               <UpcomingPage />
             </Suspense>
           } />
           <Route path="/wishlist" element={
-            <Suspense fallback={<LoadingSpinner message="Loading wishlist..." />}>
+            <Suspense fallback={<PageSkeleton />}>
               <WishlistPage />
             </Suspense>
           } />
           <Route path="/bag" element={
-            <Suspense fallback={<LoadingSpinner message="Loading shopping bag..." />}>
+            <Suspense fallback={<PageSkeleton />}>
               <CartPage />
             </Suspense>
           } />
           <Route path="/account" element={
-            <Suspense fallback={<LoadingSpinner message="Loading account..." />}>
+            <Suspense fallback={<PageSkeleton />}>
               <AccountPage />
             </Suspense>
           } />
           <Route path="/product/:productId" element={
-            <Suspense fallback={<LoadingSpinner message="Loading product..." />}>
+            <Suspense fallback={<PageSkeleton />}>
               <ProductDetailsPage />
             </Suspense>
           } />
           <Route path="*" element={
-            <Suspense fallback={<LoadingSpinner message="Page not found..." />}>
+            <Suspense fallback={<PageSkeleton />}>
               <NotFoundPage />
             </Suspense>
           } />

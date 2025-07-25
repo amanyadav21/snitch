@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { PageSkeleton } from '../ui/SkeletonLoader';
 
 const ProductGrid = ({ category, pageTitle, pageDescription }) => {
   const navigate = useNavigate();
@@ -122,11 +123,7 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-xl text-gray-600">Loading products...</div>
-      </div>
-    );
+    return <PageSkeleton />;
   }
 
   return (

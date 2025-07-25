@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import LoadingSpinner from '../components/ui/LoadingSpinner';
+import { PageSkeleton } from '../components/ui/SkeletonLoader';
 
 // Lazy load heavy components for better performance
 const Hero = React.lazy(() => import('../components/sections/Hero'));
@@ -11,7 +11,7 @@ const LifestyleSection = React.lazy(() => import('../components/sections/Lifesty
 const HomePage = () => {
   return (
     <div className="min-h-screen">
-      <Suspense fallback={<LoadingSpinner message="Loading home..." />}>
+      <Suspense fallback={<PageSkeleton />}>
         <Hero />
         <Categories />
         <Collection />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ProductGridSkeleton } from '../ui/SkeletonLoader';
 
 const Collection = () => {
   const navigate = useNavigate();
@@ -85,8 +86,20 @@ const Collection = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-xl text-gray-600">Loading products...</div>
+      <div className="min-h-screen bg-white">
+        <div className="bg-white py-8 sm:py-12 lg:py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-4 sm:mb-6">Our Collection</h1>
+            <p className="text-base sm:text-lg md:text-xl text-red-900 max-w-2xl mx-auto px-4 sm:px-0">
+              Discover our premium range of clothing designed for the modern individual.
+              Quality, style, and comfort - all in one place.
+            </p>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <ProductGridSkeleton count={12} />
+        </div>
       </div>
     );
   }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { FiArrowLeft, FiHeart, FiShoppingBag, FiStar, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { PageSkeleton } from '../components/ui/SkeletonLoader';
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -108,11 +109,7 @@ const ProductDetails = () => {
   };
 
   if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-xl text-gray-600">Loading product details...</div>
-      </div>
-    );
+    return <PageSkeleton />;
   }
 
   if (!product) {
