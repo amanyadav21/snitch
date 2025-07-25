@@ -5,33 +5,23 @@ const Wishlist = () => {
   const [wishlistItems, setWishlistItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Load wishlist from localStorage
-  const loadWishlist = () => {
-    try {
-      const savedWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
-      console.log('Loaded wishlist:', savedWishlist); // Debug log
-      setWishlistItems(savedWishlist);
-    } catch (error) {
-      console.error('Error loading wishlist:', error);
-      setWishlistItems([]);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
   useEffect(() => {
-    // Initial load
-    loadWishlist();
-
-    // Listen for storage changes
-    const handleStorageChange = () => {
-      console.log('Storage changed, reloading wishlist...');
-      loadWishlist();
+    const loadWishlist = () => {
+      try {
+        const savedWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        setWishlistItems(savedWishlist);
+      } catch (error) {
+        console.error('Error loading wishlist:', error);
+        setWishlistItems([]);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
+    loadWishlist();
+
+    const handleStorageChange = () => loadWishlist();
     window.addEventListener('storage', handleStorageChange);
-    
-    // Custom event for when we update storage from this app
     window.addEventListener('wishlistUpdate', handleStorageChange);
 
     return () => {
@@ -44,16 +34,12 @@ const Wishlist = () => {
     const updatedWishlist = wishlistItems.filter(item => item.id !== productId);
     setWishlistItems(updatedWishlist);
     localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
-    // Trigger storage event for navbar update
     window.dispatchEvent(new Event('storage'));
     window.dispatchEvent(new Event('wishlistUpdate'));
   };
 
   const addToBag = (product) => {
-    // Get existing bag items from localStorage
     const existingBag = JSON.parse(localStorage.getItem('shoppingBag') || '[]');
-    
-    // Create bag item with default size
     const bagItem = {
       ...product,
       quantity: 1,
@@ -61,16 +47,13 @@ const Wishlist = () => {
       addedAt: new Date().toISOString()
     };
     
-    // Check if product already exists in bag
     const existingItemIndex = existingBag.findIndex(item => 
       item.id === product.id && item.selectedSize === bagItem.selectedSize
     );
     
     if (existingItemIndex !== -1) {
-      // Update quantity if item exists
       existingBag[existingItemIndex].quantity += 1;
     } else {
-      // Add new item to bag
       existingBag.push(bagItem);
     }
     
@@ -81,80 +64,8 @@ const Wishlist = () => {
   const clearWishlist = () => {
     setWishlistItems([]);
     localStorage.removeItem('wishlist');
-    // Trigger storage event for navbar update
     window.dispatchEvent(new Event('storage'));
     window.dispatchEvent(new Event('wishlistUpdate'));
-  };
-
-  // Add test products for debugging
-  const addTestProducts = () => {
-    const testProducts = [
-      {
-        id: "test1",
-        title: "SNITCH Premium T-Shirt",
-        price: 1499,
-        discountPrice: 1999,
-        rating: 4,
-        ratingCount: 25,
-        category: ["Top", "T-shirts"],
-        colors: [
-          {
-            name: "Black",
-            hex: "#000000",
-            images: ["https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202829/4MST2728-02-M17_oihpwi.webp"]
-          }
-        ],
-        sizes: ["S", "M", "L", "XL"],
-        brand: "Snitch"
-      },
-      {
-        id: "test2", 
-        title: "SNITCH Urban Joggers",
-        price: 2299,
-        discountPrice: 2799,
-        rating: 5,
-        ratingCount: 18,
-        category: ["Bottom", "Joggers"],
-        colors: [
-          {
-            name: "Navy",
-            hex: "#1e3a8a",
-            images: ["https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202827/4MST2728-02_3_5f42dd4e-51e8-42e2-98e6-76213ce0493c_tv7sxs.webp"]
-          }
-        ],
-        sizes: ["S", "M", "L", "XL"],
-        brand: "Snitch"
-      }
-    ];
-    
-    const existingWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
-    const updatedWishlist = [...existingWishlist, ...testProducts];
-    console.log('🔄 Adding test products...');
-    console.log('📊 Before update - existing wishlist:', existingWishlist);
-    console.log('📊 After update - updated wishlist:', updatedWishlist);
-    
-    // Update state first
-    setWishlistItems(updatedWishlist);
-    
-    // Then update localStorage
-    localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
-    console.log('💾 Saved to localStorage');
-    
-    // Trigger storage event for navbar update
-    window.dispatchEvent(new Event('storage'));
-    window.dispatchEvent(new Event('wishlistUpdate'));
-    console.log('📡 Events dispatched');
-    
-    window.showToast && window.showToast('Added test products to wishlist!', 'wishlist');
-  };
-
-  // Debug function to check localStorage
-  const checkLocalStorage = () => {
-    const wishlist = localStorage.getItem('wishlist');
-    console.log('Raw wishlist data:', wishlist);
-    console.log('Parsed wishlist data:', JSON.parse(wishlist || '[]'));
-    console.log('Current wishlistItems state:', wishlistItems);
-    alert(`Wishlist items in localStorage: ${wishlist ? JSON.parse(wishlist).length : 0}\nCurrent state items: ${wishlistItems.length}`);
   };
 
   return (
@@ -163,9 +74,6 @@ const Wishlist = () => {
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-[120px] font-bold text-black/40 mb-4">My Wishlist</h1>
-          {/* <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Save your favorite items for later. Never miss out on the products you love.
-          </p> */}
           <div className="mt-4 text-sm text-gray-500">
             {isLoading ? 'Loading...' : `${wishlistItems.length} ${wishlistItems.length === 1 ? 'item' : 'items'} in your wishlist`}
           </div>
@@ -188,20 +96,12 @@ const Wishlist = () => {
             </div>
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">Your wishlist is empty</h3>
             <p className="text-gray-500 mb-8">Start adding items you love to your wishlist!</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                to="/"
-                className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-center"
-              >
-                Continue Shopping
-              </Link>
-              <button
-                onClick={addTestProducts}
-                className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200"
-              >
-                Add Test Products
-              </button>
-            </div>
+            <Link
+              to="/"
+              className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-center"
+            >
+              Continue Shopping
+            </Link>
           </div>
         ) : (
           <>
@@ -210,20 +110,12 @@ const Wishlist = () => {
               <h2 className="text-2xl font-semibold text-gray-900">
                 Your Favorite Items
               </h2>
-              <div className="flex gap-2">
-                <button
-                  onClick={checkLocalStorage}
-                  className="text-blue-600 hover:text-blue-800 text-sm font-medium"
-                >
-                  Debug
-                </button>
-                <button
-                  onClick={clearWishlist}
-                  className="text-red-600 hover:text-red-800 text-sm font-medium"
-                >
-                  Clear All
-                </button>
-              </div>
+              <button
+                onClick={clearWishlist}
+                className="text-red-600 hover:text-red-800 text-sm font-medium"
+              >
+                Clear All
+              </button>
             </div>
 
             {/* Wishlist Grid */}
@@ -233,28 +125,17 @@ const Wishlist = () => {
                   key={product.id}
                   className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col h-full"
                 >
-                  {/* Product Image */}
-                  <div className="relative overflow-hidden rounded-t-lg">
+                  {/* Product Image - Clickable */}
+                  <Link to={`/product/${product.id}`} className="relative overflow-hidden rounded-t-lg">
                     <img
                       src={product.colors?.[0]?.images?.[0] || product.images?.[0] || 'https://via.placeholder.com/400x500/f3f4f6/9ca3af?text=No+Image'}
                       alt={product.title || product.name}
-                      className="w-full h-80 object-cover"
+                      className="w-full h-80 object-cover hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
                         e.target.src = 'https://via.placeholder.com/400x500/f3f4f6/9ca3af?text=No+Image';
                       }}
                     />
                     
-                    {/* Remove from Wishlist Button */}
-                    <button
-                      onClick={() => removeFromWishlist(product.id)}
-                      className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md hover:bg-gray-50"
-                      title="Remove from wishlist"
-                    >
-                      <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </button>
-
                     {/* Badges */}
                     <div className="absolute top-4 left-4 flex flex-col space-y-2">
                       {product.isOnSale && (
@@ -268,13 +149,26 @@ const Wishlist = () => {
                         </span>
                       )}
                     </div>
-                  </div>
+                  </Link>
+
+                  {/* Remove from Wishlist Button - Outside the link */}
+                  <button
+                    onClick={() => removeFromWishlist(product.id)}
+                    className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md hover:bg-gray-50 z-10"
+                    title="Remove from wishlist"
+                  >
+                    <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </button>
 
                   {/* Product Info */}
                   <div className="p-6 flex flex-col flex-grow">
-                    <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
-                      {product.title || product.name}
-                    </h3>
+                    <Link to={`/product/${product.id}`}>
+                      <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 hover:text-gray-700 transition-colors duration-200">
+                        {product.title || product.name}
+                      </h3>
+                    </Link>
                     
                     {/* Rating */}
                     {product.rating && (
@@ -327,7 +221,7 @@ const Wishlist = () => {
                       </div>
                     )}
 
-                    {/* Action Buttons - Always at bottom */}
+                    {/* Action Buttons */}
                     <div className="flex space-x-2 mt-auto">
                       <button
                         onClick={() => removeFromWishlist(product.id)}
