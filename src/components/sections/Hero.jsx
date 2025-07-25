@@ -10,7 +10,7 @@ const Hero = () => {
     {
       id: 1,
       // Primary: High-res Unsplash
-      image: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1920&q=80",
+      image: "https://images.unsplash.com/photo-1600201319331-27d31ecd7850?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       // Fallback 1: Lorem Picsum
       fallback1: "https://picsum.photos/1920/1080?random=1",
       // Fallback 2: Placeholder service
@@ -31,7 +31,7 @@ const Hero = () => {
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1920&q=80",
+      image: "https://plus.unsplash.com/premium_photo-1733701621172-12eaddbadc6b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       fallback1: "https://picsum.photos/1920/1080?random=3",
       fallback2: "https://via.placeholder.com/1920x1080/4facfe/ffffff?text=EXCLUSIVE+DESIGNS",
       gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
@@ -42,6 +42,15 @@ const Hero = () => {
       id: 4,
       image: "https://images.unsplash.com/photo-1445205170230-053b83016050?auto=format&fit=crop&w=1920&q=80",
       fallback1: "https://picsum.photos/1920/1080?random=4",
+      fallback2: "https://via.placeholder.com/1920x1080/43e97b/ffffff?text=SOPHISTICATED+LOOKS",
+      gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
+      title: "SOPHISTICATED LOOKS",
+      subtitle: "Contemporary Elegance"
+    },
+    {
+      id: 5,
+      image: "https://plus.unsplash.com/premium_photo-1724220736652-8514fef4f067?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      fallback1: "https://picsum.photos/1920/1080?random=5",
       fallback2: "https://via.placeholder.com/1920x1080/43e97b/ffffff?text=SOPHISTICATED+LOOKS",
       gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)",
       title: "SOPHISTICATED LOOKS",
@@ -144,7 +153,7 @@ const Hero = () => {
             >
               {/* Background Image or Gradient */}
               <div
-                className="w-full h-full bg-cover bg-center bg-no-repeat"
+                className="w-full h-full bg-cover bg-top bg-no-repeat"
                 style={{
                   backgroundImage: isGradient ? imageUrl : imageUrl ? `url(${imageUrl})` : slide.gradient,
                   filter: isGradient ? 'none' : 'brightness(0.7) contrast(1.1)',
@@ -176,15 +185,15 @@ const Hero = () => {
         <div className="text-center max-w-5xl mx-auto">
 
           {/* Dynamic Subtitle */}
-          <div className="mb-6 h-20 flex items-center justify-center">
+          {/* <div className="mb-6 h-20 flex items-center justify-center">
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light text-white/90 tracking-wide">
               {slides[currentSlide].title}
             </h2>
-          </div>
+          </div> */}
 
           {/* Description */}
           <p className="text-lg sm:text-xl md:text-2xl text-white/80 font-light mb-12 max-w-3xl mx-auto leading-relaxed">
-            {slides[currentSlide].subtitle} • Premium Indian Fashion
+            {slides[currentSlide].subtitle} <span className='text-[#d6ff00]'>•</span> Premium Indian Fashion
           </p>
 
           {/* Action Buttons */}
@@ -196,10 +205,10 @@ const Hero = () => {
                   block: 'start' 
                 });
               }}
-              className="group relative overflow-hidden bg-white text-black px-8 py-4 font-semibold text-lg tracking-wide transition-all duration-300 hover:bg-black hover:text-white border-2 border-white hover:border-black"
+              className="group relative overflow-hidden bg-black text-white px-6 py-3  rounded-full font-semibold text-md tracking-wide transition-all duration-300 hover:bg-black hover:text-black border-1 border-white hover:border-black cursor-pointer"
             >
               <span className="relative z-10">EXPLORE COLLECTION</span>
-              <div className="absolute inset-0 bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
+              <div className="absolute inset-0 bg-[#d6ff00] transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
             </button>
             
             <button 
@@ -209,7 +218,7 @@ const Hero = () => {
                   block: 'start' 
                 });
               }}
-              className="group relative overflow-hidden bg-transparent text-white px-8 py-4 font-semibold text-lg tracking-wide border-2 border-white transition-all duration-300 hover:bg-white hover:text-black"
+              className="group relative overflow-hidden bg-transparent text-white px-6 py-3 rounded-full font-semibold text-md tracking-wide border-1 border-white transition-all duration-300 hover:bg-white hover:text-black cursor-pointer"
             >
               <span className="relative z-10">BROWSE CATEGORIES</span>
               <div className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></div>
@@ -221,7 +230,7 @@ const Hero = () => {
       {/* Navigation Arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300 group"
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full cursor-pointer flex items-center justify-center bg-white/10 hover:bg-black backdrop-blur-sm border border-white/20 transition-all duration-300 group"
       >
         <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -230,7 +239,7 @@ const Hero = () => {
 
       <button
         onClick={nextSlide}
-        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/20 transition-all duration-300 group"
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full cursor-pointer flex items-center justify-center bg-white/10 hover:bg-black backdrop-blur-sm border border-white/20 transition-all duration-300 group"
       >
         <svg className="w-6 h-6 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -244,9 +253,9 @@ const Hero = () => {
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 rounded-full transition-all duration-300 ${
                 index === currentSlide
-                  ? 'bg-white scale-125 shadow-lg'
+                  ? 'bg-[#d6ff00] scale-125 shadow-lg'
                   : 'bg-white/40 hover:bg-white/60'
               }`}
             />
