@@ -6,15 +6,22 @@ const ScrollToTop = () => {
 
   // Handle route changes
   useEffect(() => {
-    // Instant scroll to top when route changes
-    window.scrollTo(0, 0);
-    
-    // Alternative with smooth scroll (uncomment if you prefer smooth animation)
-    // window.scrollTo({
-    //   top: 0,
-    //   left: 0,
-    //   behavior: 'smooth'
-    // });
+    // Use a small timeout to ensure DOM is ready
+    const scrollTimeout = setTimeout(() => {
+      // Force immediate scroll to top
+      window.scrollTo(0, 0);
+      
+      // Additional scroll to top with smooth behavior for better UX
+      setTimeout(() => {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth'
+        });
+      }, 10);
+    }, 0);
+
+    return () => clearTimeout(scrollTimeout);
   }, [pathname]);
 
   // Handle page refresh/initial load
@@ -39,6 +46,9 @@ const ScrollToTop = () => {
 
     window.addEventListener('load', handleLoad);
     window.addEventListener('beforeunload', handleBeforeUnload);
+    
+    // Force scroll to top immediately
+    window.scrollTo(0, 0);
     
     // Cleanup
     return () => {

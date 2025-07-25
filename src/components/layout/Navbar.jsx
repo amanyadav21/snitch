@@ -67,25 +67,32 @@ const Navbar = () => {
           <div className='flex-shrink-0'>
             <Link 
               to="/" 
-              className='flex items-center hover:opacity-80 transition-opacity duration-200'
+              className='flex items-center cursor-pointer'
+              onClick={(e) => {
+                // Ensure navigation to home page and scroll to top
+                if (location.pathname === '/') {
+                  e.preventDefault();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
             >
               <img 
                 src="https://res.cloudinary.com/dqso1oxdt/image/upload/v1753421426/idEdWeNoJa_logos_jvojb2.png"
-                alt="SNITCH Logo"
-                className="h-7 sm:h-9 lg:h-11 w-auto object-contain max-w-[120px] sm:max-w-[140px] lg:max-w-[160px]"
+                alt="SNITCH Logo - Go to Home"
+                className="h-7 sm:h-9 lg:h-11 w-auto object-contain max-w-[120px] sm:max-w-[140px] lg:max-w-[140px]"
                 onError={(e) => {
                   // Fallback to text logo if image fails to load
                   e.target.style.display = 'none';
                   e.target.nextSibling.style.display = 'block';
                 }}
               />
-              {/* <span 
+              <span 
                 className='text-black text-xl sm:text-2xl lg:text-3xl font-bold tracking-wide hidden'
                 style={{ display: 'none' }}
               >
                 SNITCH
                 <span className='text-green-500 text-xs sm:text-sm ml-1'>●</span>
-              </span> */}
+              </span>
             </Link>
           </div>
 
