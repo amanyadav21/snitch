@@ -105,7 +105,7 @@ const Collection = () => {
   }
 
   return (
-    <div className="min-h-screen bg-white">
+    <div id="collection-section" className="min-h-screen bg-white">
       <div className="bg-white py-8 sm:py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-4 sm:mb-6">Our Collection</h1>

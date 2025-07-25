@@ -12,8 +12,17 @@ const AddToBag = () => {
   }, []);
 
   const calculateTotal = (items) => {
-    const total = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    setTotalPrice(total);
+    try {
+      const total = items.reduce((sum, item) => {
+        const price = item.price || 0;
+        const quantity = item.quantity || 0;
+        return sum + (price * quantity);
+      }, 0);
+      setTotalPrice(total);
+    } catch (error) {
+      console.error('Error calculating total:', error);
+      setTotalPrice(0);
+    }
   };
 
   const updateQuantity = (productId, newQuantity) => {

@@ -27,10 +27,21 @@ const ProductDetails = () => {
           setProduct(foundProduct);
           
           // Find related products from the same categories
-          const related = productList.filter(p => 
-            p.id !== productId && 
-            p.category.some(cat => foundProduct.category.includes(cat))
-          ).slice(0, 4);
+          const foundProductCategories = Array.isArray(foundProduct.category) 
+            ? foundProduct.category 
+            : [foundProduct.category];
+            
+          const related = productList.filter(p => {
+            if (p.id === productId) return false;
+            
+            const productCategories = Array.isArray(p.category) 
+              ? p.category 
+              : [p.category];
+              
+            return productCategories.some(cat => 
+              foundProductCategories.includes(cat)
+            );
+          }).slice(0, 4);
           
           setRelatedProducts(related);
         } else {

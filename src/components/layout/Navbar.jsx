@@ -21,10 +21,16 @@ const Navbar = () => {
   // Update item counts from localStorage
   useEffect(() => {
     const updateCounts = () => {
-      const bag = JSON.parse(localStorage.getItem('shoppingBag') || '[]');
-      const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
-      setBagItems(bag.reduce((total, item) => total + item.quantity, 0));
-      setWishlistItems(wishlist.length);
+      try {
+        const bag = JSON.parse(localStorage.getItem('shoppingBag') || '[]');
+        const wishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+        setBagItems(bag.reduce((total, item) => total + (item.quantity || 0), 0));
+        setWishlistItems(wishlist.length);
+      } catch (error) {
+        console.error('Error updating navbar counts:', error);
+        setBagItems(0);
+        setWishlistItems(0);
+      }
     };
 
     updateCounts();

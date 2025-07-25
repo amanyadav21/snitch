@@ -98,7 +98,7 @@ const Categories = () => {
   }
 
   return (
-    <section className='w-full bg-black py-20'>
+    <section id="categories-section" className='w-full bg-black py-20'>
       {/* Enhanced Header */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="text-center">

@@ -2,7 +2,7 @@ import React from 'react';
 import Lottie from 'lottie-react';
 import loadingAnimation from '../../assets/animations/loading-animation.json';
 
-const LoadingSpinner = ({ message = "Loading..." }) => {
+const LoadingSpinner = () => {
   return (
     <div className="min-h-screen bg-black flex items-center justify-center p-4">
       <div className="text-center space-y-6">
@@ -28,5 +28,3 @@ const LoadingSpinner = ({ message = "Loading..." }) => {
 };
 
 export default LoadingSpinner;
-
-// export default LoadingSpinner;

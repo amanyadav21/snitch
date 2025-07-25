@@ -27,11 +27,17 @@ export const useProducts = (category = null) => {
         // Filter by category if provided
         let filteredProducts = data;
         if (category && category !== 'all') {
-          filteredProducts = data.filter(product =>
-            product.category?.some(cat =>
+          filteredProducts = data.filter(product => {
+            if (!product.category) return false;
+            
+            const categories = Array.isArray(product.category) 
+              ? product.category 
+              : [product.category];
+              
+            return categories.some(cat =>
               cat.toLowerCase().includes(category.toLowerCase())
-            )
-          );
+            );
+          });
         }
         
         setProducts(filteredProducts);
