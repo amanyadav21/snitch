@@ -9,12 +9,20 @@ const Collection = () => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const response = await fetch('/data/product.json');
+        console.log('Collection: Starting to load products...'); // Debug log
+        const response = await fetch('/data/products.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         const productList = Array.isArray(data) ? data : [data];
-        setProducts(productList);
+        console.log('Collection: Loaded products:', productList.length); // Debug log
+        
+        // Show a good mix of products (limit to 12 for performance)
+        const featuredProducts = productList.slice(0, 12);
+        setProducts(featuredProducts);
       } catch (error) {
-        console.error('Error loading products:', error);
+        console.error('Collection: Error loading products:', error);
       } finally {
         setLoading(false);
       }

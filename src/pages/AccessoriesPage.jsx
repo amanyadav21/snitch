@@ -1,5 +1,5 @@
 import React from 'react';
-import LazyProductGrid from '../LazyProductGrid';
+import LazyProductGrid from '../components/sections/LazyProductGrid';
 
 const Accessories = () => {
   return (

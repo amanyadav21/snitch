@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductShowcase from '../ProductShowcase';
+import ProductShowcase from '../components/sections/ProductShowcase';
 
 const Upcoming = () => {
   return (

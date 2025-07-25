@@ -10,19 +10,25 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const response = await fetch('/data/product.json');
+        console.log(`ProductGrid: Loading products for category: ${category}`); // Debug log
+        const response = await fetch('/data/products.json');
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         
         const productList = Array.isArray(data) ? data : [data];
+        console.log(`ProductGrid: Total products loaded: ${productList.length}`); // Debug log
         
         // Filter products based on category
         let filtered = productList;
         
         if (category === 'Sale') {
-          // Filter products that are on sale (have discountPrice different from price or isOnSale flag)
+          // Filter products that are on sale (have discountPrice higher than price OR have "Sale" in category)
           filtered = productList.filter(product => 
             (product.discountPrice && product.discountPrice > product.price) || 
-            product.isOnSale
+            product.isOnSale ||
+            (Array.isArray(product.category) && product.category.some(cat => cat.toLowerCase().includes('sale')))
           );
         } else if (category === 'Top') {
           // Filter products in Top category
@@ -39,14 +45,19 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
               : product.category?.toLowerCase().includes('bottom')
           );
         } else if (category === 'Accessories') {
-          // Filter products in Accessories category
+          // Filter products in Accessories category (handle both spellings)
           filtered = productList.filter(product => 
             Array.isArray(product.category) 
-              ? product.category.some(cat => cat.toLowerCase().includes('accessories'))
-              : product.category?.toLowerCase().includes('accessories')
+              ? product.category.some(cat => 
+                  cat.toLowerCase().includes('accessories') || 
+                  cat.toLowerCase().includes('accssories')
+                )
+              : (product.category?.toLowerCase().includes('accessories') || 
+                 product.category?.toLowerCase().includes('accssories'))
           );
         }
         
+        console.log(`ProductGrid: Filtered products for ${category}: ${filtered.length}`); // Debug log
         setFilteredProducts(filtered);
         setLoading(false);
       } catch (error) {

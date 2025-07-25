@@ -1,30 +1,26 @@
 import React, { Suspense } from 'react'
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
-import Navbar from './components/navbar'
-import LoadingSpinner from './components/LoadingSpinner'
-import ErrorBoundary from './components/ErrorBoundary'
-import ToastContainer from './components/ToastNotification'
-import ScrollToTop from './components/ScrollToTop'
-
-// Lazy load heavy components for better performance
-const Hero = React.lazy(() => import('./components/hero'))
-const Categories = React.lazy(() => import('./components/Categories'))
-const Footer = React.lazy(() => import('./components/Footer'))
-const LifestyleSection = React.lazy(() => import('./components/LifestyleSection'))
-const ProductShowcase = React.lazy(() => import('./components/ProductShowcase'))
-const Collection = React.lazy(() => import('./components/collection'))
+import Navbar from './components/layout/Navbar'
+import LoadingSpinner from './components/ui/LoadingSpinner'
+import ErrorBoundary from './components/ui/ErrorBoundary'
+import ToastContainer from './components/ui/ToastNotification'
+import ScrollToTop from './components/layout/ScrollToTop'
 
 // Lazy load page components
-const Sale = React.lazy(() => import('./components/pages/Sale'))
-const Top = React.lazy(() => import('./components/pages/Top'))
-const Bottom = React.lazy(() => import('./components/pages/Bottom'))
-const Accessories = React.lazy(() => import('./components/pages/Accessories'))
-const Upcoming = React.lazy(() => import('./components/pages/Upcoming'))
-const Wishlist = React.lazy(() => import('./components/pages/Wishlist'))
-const AddToBag = React.lazy(() => import('./components/pages/Addtobag'))
-const Account = React.lazy(() => import('./components/pages/Account'))
-const ProductDetails = React.lazy(() => import('./components/pages/ProductDetails'))
-const NotFoundPage = React.lazy(() => import('./components/pages/Notfoundpage'))
+const HomePage = React.lazy(() => import('./pages/HomePage'))
+const SalePage = React.lazy(() => import('./pages/SalePage'))
+const TopPage = React.lazy(() => import('./pages/TopPage'))
+const BottomPage = React.lazy(() => import('./pages/BottomPage'))
+const AccessoriesPage = React.lazy(() => import('./pages/AccessoriesPage'))
+const UpcomingPage = React.lazy(() => import('./pages/UpcomingPage'))
+const WishlistPage = React.lazy(() => import('./pages/WishlistPage'))
+const CartPage = React.lazy(() => import('./pages/CartPage'))
+const AccountPage = React.lazy(() => import('./pages/AccountPage'))
+const ProductDetailsPage = React.lazy(() => import('./pages/ProductDetailsPage'))
+const NotFoundPage = React.lazy(() => import('./pages/NotFoundPage'))
+
+// Lazy load layout components
+const Footer = React.lazy(() => import('./components/layout/Footer'))
 
 // Component to handle conditional footer rendering
 const AppContent = () => {
@@ -42,56 +38,52 @@ const AppContent = () => {
         <Routes>
           <Route path="/" element={
             <Suspense fallback={<LoadingSpinner message="Loading home..." />}>
-              <Hero />
-              <Categories />
-              <Collection />
-              <ProductShowcase />
-              <LifestyleSection />
+              <HomePage />
             </Suspense>
           } />
           <Route path="/sale" element={
             <Suspense fallback={<LoadingSpinner message="Loading sale products..." />}>
-              <Sale />
+              <SalePage />
             </Suspense>
           } />
           <Route path="/top" element={
             <Suspense fallback={<LoadingSpinner message="Loading top wear..." />}>
-              <Top />
+              <TopPage />
             </Suspense>
           } />
           <Route path="/bottom" element={
             <Suspense fallback={<LoadingSpinner message="Loading bottom wear..." />}>
-              <Bottom />
+              <BottomPage />
             </Suspense>
           } />
           <Route path="/accessories" element={
             <Suspense fallback={<LoadingSpinner message="Loading accessories..." />}>
-              <Accessories />
+              <AccessoriesPage />
             </Suspense>
           } />
           <Route path="/upcoming" element={
             <Suspense fallback={<LoadingSpinner message="Loading upcoming collection..." />}>
-              <Upcoming />
+              <UpcomingPage />
             </Suspense>
           } />
           <Route path="/wishlist" element={
             <Suspense fallback={<LoadingSpinner message="Loading wishlist..." />}>
-              <Wishlist />
+              <WishlistPage />
             </Suspense>
           } />
           <Route path="/bag" element={
             <Suspense fallback={<LoadingSpinner message="Loading shopping bag..." />}>
-              <AddToBag />
+              <CartPage />
             </Suspense>
           } />
           <Route path="/account" element={
             <Suspense fallback={<LoadingSpinner message="Loading account..." />}>
-              <Account />
+              <AccountPage />
             </Suspense>
           } />
           <Route path="/product/:productId" element={
             <Suspense fallback={<LoadingSpinner message="Loading product..." />}>
-              <ProductDetails />
+              <ProductDetailsPage />
             </Suspense>
           } />
           <Route path="*" element={
