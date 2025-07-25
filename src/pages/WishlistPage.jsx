@@ -162,10 +162,10 @@ const Wishlist = () => {
       {/* Header */}
       <div className="bg-white py-16">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">My Wishlist</h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <h1 className="text-[120px] font-bold text-black/40 mb-4">My Wishlist</h1>
+          {/* <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Save your favorite items for later. Never miss out on the products you love.
-          </p>
+          </p> */}
           <div className="mt-4 text-sm text-gray-500">
             {isLoading ? 'Loading...' : `${wishlistItems.length} ${wishlistItems.length === 1 ? 'item' : 'items'} in your wishlist`}
           </div>
@@ -173,7 +173,7 @@ const Wishlist = () => {
       </div>
 
       {/* Wishlist Content */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
+      <div className="max-w-8xl mx-auto px-4 py-12">
         {isLoading ? (
           <div className="text-center py-16">
             <div className="w-12 h-12 border-4 border-gray-300 border-t-black rounded-full animate-spin mx-auto mb-4"></div>

@@ -172,21 +172,19 @@ const Collection = () => {
                     <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
-                    <span className="hidden sm:inline">Wishlist</span>
-                    <span className="sm:hidden">❤</span>
+                    <span>Wishlist</span>
                   </button>
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       handleAddToBag(product);
                     }}
-                    className="flex-1 bg-black text-[#d6ff00] py-2 px-2 sm:px-4 rounded-full text-xs sm:text-sm font-medium hover:bg-[#d6ff00] hover:text-black transition-colors duration-200 flex items-center justify-center cursor-pointer"
+                    className="flex-1 bg-[#6200ff] text-white py-2 px-2 sm:px-4 rounded-full text-xs sm:text-sm font-medium hover:bg-[#d6ff00] hover:text-black transition-colors duration-200 flex items-center justify-center cursor-pointer"
                   >
                     <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
-                    <span className="hidden sm:inline">Add to Bag</span>
-                    <span className="sm:hidden">🛒</span>
+                    <span>Add to Bag</span>
                   </button>
                 </div>
               </div>
