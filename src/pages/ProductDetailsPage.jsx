@@ -167,7 +167,7 @@ const ProductDetails = () => {
       <div className="max-w-7xl mx-auto px-4 py-4">
         <button
           onClick={() => navigate(-1)}
-          className="flex items-center space-x-2 text-gray-600 hover:text-gray-900 transition-colors duration-200"
+          className="flex items-center space-x-2 text-black hover:text-gray-900 transition-colors duration-200 cursor-pointer "
         >
           <FiArrowLeft className="h-5 w-5" />
           <span>Back</span>
@@ -251,7 +251,7 @@ const ProductDetails = () => {
 
             {/* Rating */}
             <div className="flex items-center space-x-2">
-              <div className="flex text-yellow-400">
+              <div className="flex text-[#6200FF]">
                 {[...Array(5)].map((_, i) => (
                   <FiStar key={i} className={`h-5 w-5 ${i < product.rating ? 'fill-current' : ''}`} />
                 ))}
@@ -304,7 +304,7 @@ const ProductDetails = () => {
                   <button
                     key={size}
                     onClick={() => setSelectedSize(size)}
-                    className={`py-2 px-4 border rounded-lg text-center transition-all duration-200 ${
+                    className={`py-2 px-4 border rounded-full cursor-pointer text-center transition-all duration-200 ${
                       selectedSize === size
                         ? 'border-gray-900 bg-gray-900 text-white'
                         : 'border-gray-300 hover:border-gray-500 bg-white text-gray-700'
@@ -320,7 +320,7 @@ const ProductDetails = () => {
             <div className="space-y-4">
               <button
                 onClick={handleAddToCart}
-                className="w-full bg-gray-900 text-white py-4 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center space-x-2"
+                className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center space-x-2 cursor-pointer "
               >
                 <FiShoppingBag className="h-5 w-5" />
                 <span>Add to Cart</span>
@@ -328,7 +328,7 @@ const ProductDetails = () => {
               
               <button
                 onClick={handleAddToWishlist}
-                className="w-full border border-gray-900 text-gray-900 py-4 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center space-x-2"
+                className="w-full border border-gray-900 text-gray-900 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center space-x-2 cursor-pointer "
               >
                 <FiHeart className="h-5 w-5" />
                 <span>Add to Wishlist</span>
