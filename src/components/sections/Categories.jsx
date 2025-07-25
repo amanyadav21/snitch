@@ -13,7 +13,7 @@ const Categories = () => {
       name: 'Sale',
       subtitle: 'Hot Deals',
       description: 'Up to 70% off on premium fashion',
-      image: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753171191/pexels-picturesbyamusan-6732388_dqvefo.jpg',
+      image: 'https://plus.unsplash.com/premium_photo-1733701621172-12eaddbadc6b?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       redirect: '/sale',
       badge: 'Get 10% Off',
       color: 'bg-red-500',
@@ -27,8 +27,8 @@ const Categories = () => {
       description: 'Shirts, T-shirts & Polos',
       image: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753183633/4MST2822-04_1_4e11e47b-8020-49b5-bd14-21d3d749046a_zmrmkz.webp',
       redirect: '/top',
-      color: 'bg-green-500',
-      hoverColor: 'hover:bg-green-600',
+      color: 'bg-[#d6ff00]',
+      hoverColor: 'hover:bg-black',
       items: '150+ Items'
     },
     {
@@ -38,8 +38,8 @@ const Categories = () => {
       description: 'Jeans, Chinos & Joggers',
       image: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753183631/4MSD3576-07-325071_a9566a57-5bd5-4122-8db9-189bf8f6efee_fp0rdq.webp',
       redirect: '/bottom',
-      color: 'bg-green-500',
-      hoverColor: 'hover:bg-green-600',
+      color: 'bg-[#d6ff00]',
+      hoverColor: 'hover:bg-black',
       items: '120+ Items'
     },
     {
@@ -49,8 +49,8 @@ const Categories = () => {
       description: 'Watches, Bags & More',
       image: 'https://res.cloudinary.com/dqso1oxdt/image/upload/v1753188710/ocult-store-P0diTRs6BlE-unsplash_lb2gkv.jpg',
       redirect: '/accessories',
-      color: 'bg-green-500',
-      hoverColor: 'hover:bg-green-600',
+      color: 'bg-[#d6ff00]',
+      hoverColor: 'hover:bg-black',
       items: '80+ Items'
     }
   ]
@@ -103,12 +103,12 @@ const Categories = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="text-center">
           <div className="inline-block">
-            <h2 className="text-5xl lg:text-7xl font-normal text-white mb-6 tracking-tight relative">
-              CATEGORIES
+            <h2 className="text-5xl lg:text-5xl font-normal text-white mb-4 tracking-tight relative">
+              Categories
               <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-24 h-1"></div>
             </h2>
           </div>
-          <p className="text-xl text-stone-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white/50 max-w-3xl mx-auto leading-relaxed">
             Discover our curated collections designed for the modern Indian. From trendy streetwear to premium accessories.
           </p>
         </div>
@@ -120,10 +120,10 @@ const Categories = () => {
         {canScrollLeft && (
           <button 
             onClick={scrollLeft}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-4 hover:bg-gray-50 border border-gray-200"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-4 border border-gray-200 cursor-pointer "
             aria-label="Scroll left"
           >
-            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
@@ -132,10 +132,10 @@ const Categories = () => {
         {canScrollRight && (
           <button 
             onClick={scrollRight}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-4 hover:bg-gray-50 border border-gray-200"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-20 bg-white shadow-lg rounded-full p-4 hover:bg-gray-50 border border-gray-200 cursor-pointer "
             aria-label="Scroll right"
           >
-            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -175,15 +175,15 @@ const Categories = () => {
                 
                 {/* Badge */}
                 {category.badge && (
-                  <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                  <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-medium">
                     {category.badge}
                   </div>
                 )}
 
                 {/* Items Count */}
-                <div className="absolute top-4 left-4 bg-white/20 text-white px-3 py-1 rounded-full text-xs font-medium">
+                {/* <div className="absolute top-4 left-4 bg-white/20 text-white px-3 py-1 rounded-full text-xs font-medium">
                   {category.items}
-                </div>
+                </div> */}
                 
                 {/* Category Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-6">
@@ -201,7 +201,7 @@ const Categories = () => {
                     {/* Enhanced Button */}
                     <button
                       onClick={() => handleCategoryClick(category.redirect)}
-                      className={`${category.color} ${category.hoverColor} cursor-pointer text-white px-7 py-2 rounded-full font-medium text-md shadow-lg`}
+                      className={`${category.color} ${category.hoverColor} cursor-pointer text-black px-7 py-2 rounded-full font-medium text-md shadow-lg hover:text-white `}
                     >
                       Shop {category.name}
                     </button>
