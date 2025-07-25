@@ -6,7 +6,7 @@ const Accessories = () => {
     <LazyProductGrid 
       category="Accessories"
       pageTitle="Accessories Collection"
-      pageDescription="Complete your style with our curated collection of watches, belts, wallets, sunglasses, and more premium accessories."
+      // pageDescription="Complete your style with our curated collection of watches, belts, wallets, sunglasses, and more premium accessories."
     />
   );
 };

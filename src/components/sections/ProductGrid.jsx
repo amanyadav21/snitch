@@ -131,20 +131,20 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Page Header */}
-      <div className="bg-white py-12 sm:py-16 lg:py-20">
+      <div className="bg-white py-12 sm:py-16 lg:py-15">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">{pageTitle}</h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[120px] font-bold text-black/40 mb-4 sm:mb-6">{pageTitle}</h1>
+          {/* <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
             {pageDescription}
-          </p>
-          <div className="mt-4 text-sm sm:text-base text-gray-500">
+          </p> */}
+          <div className="mt-4 text-sm sm:text-base text-black">
             {filteredProducts.length} products found
           </div>
         </div>
       </div>
 
       {/* Products Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {filteredProducts.length === 0 ? (
           <div className="text-center py-16">
             <h3 className="text-xl text-gray-600 mb-4">No products found</h3>
@@ -156,7 +156,7 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
               <div
                 key={product.id}
                 onClick={() => openProductDetail(product)}
-                className="bg-white rounded-lg shadow-md hover:shadow-xl cursor-pointer group transition-all duration-300 flex flex-col h-full"
+                className="bg-white rounded-lg shadow-md hover:shadow-xl cursor-pointer group flex flex-col h-full"
               >
                 {/* Product Image */}
                 <div className="relative overflow-hidden rounded-t-lg">
@@ -172,7 +172,7 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                   {/* Badges */}
                   <div className="absolute top-3 sm:top-4 left-3 sm:left-4 flex flex-col space-y-2">
                     {category === 'Sale' && (
-                      <span className="bg-red-600 text-white px-2 py-1 text-xs font-semibold rounded">
+                      <span className="bg-red-600 text-white px-1 py-1 text-xs font-medium rounded-full text-center">
                         SALE
                       </span>
                     )}
@@ -181,11 +181,11 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                         LUXE
                       </span>
                     )}
-                    {product.isPlusSizeAvailable && (
-                      <span className="bg-green-600 text-white px-2 py-1 text-xs font-semibold rounded">
+                    {/* {product.isPlusSizeAvailable && (
+                      <span className="bg-black text-white px-2 py-1 text-xs font-medium rounded-full">
                         PLUS SIZE
                       </span>
-                    )}
+                    )} */}
                   </div>
 
                   {/* Quick Actions */}
@@ -194,12 +194,7 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                       onClick={(e) => {
                         e.stopPropagation();
                         handleAddToWishlist();
-                      }}
-                      className="bg-white p-1.5 sm:p-2 rounded-full shadow-md hover:bg-gray-50"
-                    >
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                      </svg>
+                      }}>
                     </button>
                   </div>
                 </div>
@@ -213,7 +208,7 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                   {/* Rating */}
                   {product.rating && (
                     <div className="flex items-center mb-2">
-                      <div className="flex text-yellow-400">
+                      <div className="flex text-[#6200ff]">
                         {[...Array(5)].map((_, i) => (
                           <svg
                             key={i}
@@ -232,11 +227,11 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
 
                   {/* Price */}
                   <div className="flex items-center space-x-2 mb-3 sm:mb-4">
-                    <span className="text-lg sm:text-xl font-bold text-gray-900">
+                    <span className="text-lg sm:text-xl font-bold text-red-900">
                       ₹{product.price}
                     </span>
                     {product.discountPrice && product.discountPrice !== product.price && (
-                      <span className="text-xs sm:text-sm text-gray-500 line-through">
+                      <span className="text-xs sm:text-sm text-black line-through">
                         ₹{product.discountPrice}
                       </span>
                     )}
@@ -273,7 +268,7 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                         e.stopPropagation();
                         handleAddToWishlist(product);
                       }}
-                      className="flex-1 bg-white border border-gray-300 text-gray-900 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center"
+                      className="flex-1 bg-white border border-gray-300 text-gray-900 py-2 px-2 sm:px-4 rounded-full cursor-pointer text-xs sm:text-sm font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center"
                     >
                       <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -286,7 +281,7 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                         e.stopPropagation();
                         handleAddToBag(product);
                       }}
-                      className="flex-1 bg-black text-white py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center"
+                      className="flex-1 bg-black text-white py-2 px-2 sm:px-4 rounded-full cursor-pointer text-xs sm:text-sm font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center"
                     >
                       <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />

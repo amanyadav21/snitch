@@ -6,7 +6,7 @@ const Sale = () => {
     <LazyProductGrid 
       category="Sale"
       pageTitle="Sale Collection"
-      pageDescription="Discover amazing deals on premium clothing. Limited time offers on your favorite styles - shop now before they're gone!"
+      // pageDescription="Discover amazing deals on premium clothing. Limited time offers on your favorite styles - shop now before they're gone!"
     />
   );
 };
