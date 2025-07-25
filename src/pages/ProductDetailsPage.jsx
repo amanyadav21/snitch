@@ -320,7 +320,7 @@ const ProductDetails = () => {
             <div className="space-y-3">
               <button
                 onClick={handleAddToCart}
-                className="w-full bg-black text-white py-2.5 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center space-x-2 cursor-pointer"
+                className="w-full bg-black text-white py-2.5 rounded-full font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center space-x-2 cursor-pointer"
               >
                 <FiShoppingBag className="h-4 w-4" />
                 <span>Add to Cart</span>
@@ -328,7 +328,7 @@ const ProductDetails = () => {
               
               <button
                 onClick={handleAddToWishlist}
-                className="w-full border border-gray-900 text-gray-900 py-2.5 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center space-x-2 cursor-pointer"
+                className="w-full border border-gray-900 text-gray-900 py-2.5 rounded-full font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center space-x-2 cursor-pointer"
               >
                 <FiHeart className="h-4 w-4" />
                 <span>Add to Wishlist</span>
