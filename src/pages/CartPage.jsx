@@ -265,16 +265,16 @@ const AddToBag = () => {
 
                 {/* Promo Code */}
                 <div className="mt-6">
-                  <h4 className="text-sm font-medium text-gray-900 mb-2">
+                  <h4 className="text-xs sm:text-sm font-medium text-gray-900 mb-2">
                     Promo Code
                   </h4>
-                  <div className="flex space-x-2">
+                  <div className="flex flex-col sm:flex-row gap-2 sm:gap-2">
                     <input
                       type="text"
-                      placeholder="Enter promo code"
-                      className="flex-1 border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-black"
+                      placeholder="Enter code"
+                      className="flex-1 border border-gray-300 rounded-md px-2 sm:px-3 py-2 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-black"
                     />
-                    <button className="bg-gray-100 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-200">
+                    <button className="bg-black text-white px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap">
                       Apply
                     </button>
                   </div>
