@@ -118,7 +118,7 @@ const AddToBag = () => {
                 </h2>
                 <button
                   onClick={clearBag}
-                  className="text-red-600 hover:text-red-800 text-sm font-medium"
+                  className="text-red-600 hover:text-red-800 text-sm font-medium cursor-pointer"
                 >
                   Clear Bag
                 </button>
@@ -189,16 +189,16 @@ const AddToBag = () => {
                               <div className="flex items-center border border-gray-300 rounded-md">
                                 <button
                                   onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                  className="px-3 py-1 hover:bg-gray-100"
+                                  className="px-3 py-1 hover:bg-gray-100 cussor-pointer"
                                 >
                                   -
                                 </button>
-                                <span className="px-4 py-1 border-x border-gray-300">
+                                <span className="px-4 py-1 border-x border-gray-300 cursor-pointer">
                                   {item.quantity}
                                 </span>
                                 <button
                                   onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                  className="px-3 py-1 hover:bg-gray-100"
+                                  className="px-3 py-1 hover:bg-gray-100 cussor-pointer"
                                 >
                                   +
                                 </button>
@@ -209,7 +209,7 @@ const AddToBag = () => {
                           {/* Remove Button */}
                           <button
                             onClick={() => removeFromBag(item.id)}
-                            className="text-gray-400 hover:text-red-500"
+                            className="text-gray-400 hover:text-red-500 cusror-pointer"
                             title="Remove from bag"
                           >
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -222,7 +222,7 @@ const AddToBag = () => {
                         <div className="flex space-x-4 mt-4 pt-4 border-t border-gray-200">
                           <button
                             onClick={() => moveToWishlist(item)}
-                            className="text-sm text-gray-600 hover:text-gray-800 flex items-center"
+                            className="text-sm text-gray-600 hover:text-gray-800 flex items-center cusror-pointer"
                           >
                             <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -264,11 +264,11 @@ const AddToBag = () => {
                   </div>
                 </div>
 
-                <button className="w-full bg-black text-white py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 mb-4">
+                <button className="w-full bg-black text-white py-3 rounded-full cursor-pointer font-medium hover:bg-gray-800 transition-colors duration-200 mb-4">
                   Proceed to Checkout
                 </button>
 
-                <button className="w-full bg-white border border-gray-300 text-gray-900 py-3 rounded-lg font-medium hover:bg-gray-50 transition-colors duration-200">
+                <button className="w-full bg-white border border-gray-300 text-gray-900 py-3 rounded-full cursor-pointer font-medium hover:bg-gray-50 transition-colors duration-200">
                   Continue Shopping
                 </button>
 
@@ -283,7 +283,7 @@ const AddToBag = () => {
                       placeholder="Enter code"
                       className="flex-1 border border-gray-300 rounded-md px-2 sm:px-3 py-2 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-black"
                     />
-                    <button className="bg-black text-white px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap">
+                    <button className="bg-black text-white px-3 sm:px-4 py-2 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-800 transition-colors duration-200 whitespace-nowrap cursor-pointer">
                       Apply
                     </button>
                   </div>
