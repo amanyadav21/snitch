@@ -100,7 +100,7 @@ const ProductShowcase = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <div className="text-center mb-20">
-          <p className="text-xl sm:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl sm:text-2xl text-black/50 max-w-3xl mx-auto leading-relaxed">
             Crafted in India with global standards. Every step tells a story of
             <span className="font-semibold text-gray-900"> quality, comfort, and style.</span>
           </p>
@@ -150,13 +150,13 @@ const ProductShowcase = () => {
 
                 {/* Product Info */}
                 <div className="p-6 lg:p-8">
-                  <div className="text-sm font-medium text-red-600 mb-2">{product.category}</div>
+                  <div className="text-sm font-medium text-red-900 mb-2">{product.category}</div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-3">{product.name}</h3>
                   <p className="text-gray-600 mb-4 line-clamp-2">{product.description}</p>
                   
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-gray-900">{product.price}</span>
-                    <div className="flex items-center text-sm text-gray-500">
+                    <div className="flex items-center text-sm text-black bg-[#d6ff00] px-3 py-1 rounded-full">
                       <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
