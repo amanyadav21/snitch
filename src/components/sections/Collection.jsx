@@ -86,45 +86,45 @@ const Collection = () => {
     window.showToast && window.showToast(`Added ${product.title} to bag!`, 'cart');
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-white">
-        <div className="bg-white py-8 sm:py-12 lg:py-16">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-4 sm:mb-6">Our Collection</h1>
-            <p className="text-base sm:text-lg md:text-xl text-red-900 max-w-2xl mx-auto px-4 sm:px-0">
-              Discover our premium range of clothing designed for the modern individual.
-              Quality, style, and comfort - all in one place.
-            </p>
-          </div>
-        </div>
+  // if (loading) {
+    // return (
+    //   <div className="min-h-screen bg-white">
+    //     <div className="bg-white py-8 sm:py-12 lg:py-16">
+    //       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    //         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-4 sm:mb-6">Our Collection</h1>
+    //         <p className="text-base sm:text-lg md:text-xl text-red-900 max-w-2xl mx-auto px-4 sm:px-0">
+    //           Discover our premium range of clothing designed for the modern individual.
+    //           Quality, style, and comfort - all in one place.
+    //         </p>
+    //       </div>
+    //     </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <ProductGridSkeleton count={12} />
-        </div>
-      </div>
-    );
-  }
+    //     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+    //       <ProductGridSkeleton count={12} />
+    //     </div>
+    //   </div>
+    // );
+  // }
 
   return (
-    <div id="collection-section" className="min-h-screen bg-white">
-      <div className="bg-white py-8 sm:py-12 lg:py-16">
+    <div id="collection-section" className="min-h-screen bg-[#EFEFEF]">
+      <div className="bg-[#EFEFEF] py-8 sm:py-12 lg:py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-neutral-900 mb-4 sm:mb-6">Our Collection</h1>
-          <p className="text-base sm:text-lg md:text-xl text-red-900 max-w-2xl mx-auto px-4 sm:px-0">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-medium text-neutral-900 mb-4 sm:mb-6">Our Collection</h1>
+          <p className="text-base sm:text-lg md:text-xl text-black/50 max-w-2xl mx-auto px-4 sm:px-0">
             Discover our premium range of clothing designed for the modern individual.
             Quality, style, and comfort - all in one place.
           </p>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
           {products.map((product) => (
             <div
               key={product.id}
               onClick={() => openProductDetail(product)}
-              className="bg-white rounded-lg cursor-pointer group shadow-md hover:shadow-lg transition-shadow duration-300"
+              className="bg-white rounded-md cursor-pointer group shadow-md flex flex-col h-full"
             >
               <div className="relative overflow-hidden rounded-t-lg">
                 <img
@@ -140,17 +140,12 @@ const Collection = () => {
                     onClick={(e) => {
                       e.stopPropagation();
                       handleAddToWishlist();
-                    }}
-                    className="bg-white p-1.5 sm:p-2 rounded-full shadow-md hover:bg-gray-50"
-                  >
-                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                    </svg>
+                    }}>
                   </button>
                 </div>
               </div>
 
-              <div className="p-3 sm:p-4 lg:p-5">
+              <div className="p-3 sm:p-4 lg:p-5 flex flex-col flex-grow">
                 <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-black mb-2 line-clamp-2">
                   {product.title || product.name}
                 </h3>
@@ -159,20 +154,20 @@ const Collection = () => {
                     ₹{product.price}
                   </span>
                   {product.discountPrice && product.discountPrice !== product.price && (
-                    <span className="text-xs sm:text-sm text-gray-500 line-through">
+                    <span className="text-xs sm:text-sm text-black line-through">
                       ₹{product.discountPrice}
                     </span>
                   )}
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex space-x-2">
+                {/* Action Buttons - Always at bottom */}
+                <div className="flex space-x-2 mt-auto">
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
                       handleAddToWishlist(product);
                     }}
-                    className="flex-1 bg-white border border-gray-300 text-gray-900 py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-50 transition-colors duration-200 flex items-center justify-center"
+                    className="flex-1 bg-white border border-black text-black py-2 px-2 sm:px-4 rounded-full text-xs sm:text-sm font-medium hover:bg-neutral-300 transition-colors duration-200 flex items-center justify-center cursor-pointer"
                   >
                     <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
@@ -185,7 +180,7 @@ const Collection = () => {
                       e.stopPropagation();
                       handleAddToBag(product);
                     }}
-                    className="flex-1 bg-black text-white py-2 px-2 sm:px-4 rounded-md text-xs sm:text-sm font-medium hover:bg-gray-800 transition-colors duration-200 flex items-center justify-center"
+                    className="flex-1 bg-black text-[#d6ff00] py-2 px-2 sm:px-4 rounded-full text-xs sm:text-sm font-medium hover:bg-[#d6ff00] hover:text-black transition-colors duration-200 flex items-center justify-center cursor-pointer"
                   >
                     <svg className="w-3 h-3 sm:w-4 sm:h-4 mr-1 sm:mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />

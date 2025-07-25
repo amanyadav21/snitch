@@ -231,7 +231,7 @@ const Wishlist = () => {
               {wishlistItems.map((product) => (
                 <div
                   key={product.id}
-                  className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                  className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 flex flex-col h-full"
                 >
                   {/* Product Image */}
                   <div className="relative overflow-hidden rounded-t-lg">
@@ -271,7 +271,7 @@ const Wishlist = () => {
                   </div>
 
                   {/* Product Info */}
-                  <div className="p-6">
+                  <div className="p-6 flex flex-col flex-grow">
                     <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                       {product.title || product.name}
                     </h3>
@@ -327,8 +327,8 @@ const Wishlist = () => {
                       </div>
                     )}
 
-                    {/* Action Buttons */}
-                    <div className="flex space-x-2">
+                    {/* Action Buttons - Always at bottom */}
+                    <div className="flex space-x-2 mt-auto">
                       <button
                         onClick={() => removeFromWishlist(product.id)}
                         className="flex-1 bg-white border border-gray-300 text-gray-900 py-2 px-4 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors duration-200"

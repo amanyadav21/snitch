@@ -156,7 +156,7 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
               <div
                 key={product.id}
                 onClick={() => openProductDetail(product)}
-                className="bg-white rounded-lg shadow-md hover:shadow-xl cursor-pointer group transition-all duration-300"
+                className="bg-white rounded-lg shadow-md hover:shadow-xl cursor-pointer group transition-all duration-300 flex flex-col h-full"
               >
                 {/* Product Image */}
                 <div className="relative overflow-hidden rounded-t-lg">
@@ -205,7 +205,7 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                 </div>
 
                 {/* Product Info */}
-                <div className="p-4 sm:p-5 lg:p-6">
+                <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-grow">
                   <h3 className="text-sm sm:text-base lg:text-lg font-semibold text-gray-900 mb-2 line-clamp-2">
                     {product.title || product.name}
                   </h3>
@@ -266,8 +266,8 @@ const ProductGrid = ({ category, pageTitle, pageDescription }) => {
                     {Array.isArray(product.category) ? product.category.join(', ') : product.category}
                   </div>
 
-                  {/* Action Buttons */}
-                  <div className="flex space-x-2">
+                  {/* Action Buttons - Always at bottom */}
+                  <div className="flex space-x-2 mt-auto">
                     <button
                       onClick={(e) => {
                         e.stopPropagation();
