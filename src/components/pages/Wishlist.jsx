@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Wishlist = () => {
   const [wishlistItems, setWishlistItems] = useState([]);
@@ -6,6 +7,7 @@ const Wishlist = () => {
   useEffect(() => {
     // Load wishlist from localStorage
     const savedWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+    console.log('Loaded wishlist:', savedWishlist); // Debug log
     setWishlistItems(savedWishlist);
   }, []);
 
@@ -13,6 +15,8 @@ const Wishlist = () => {
     const updatedWishlist = wishlistItems.filter(item => item.id !== productId);
     setWishlistItems(updatedWishlist);
     localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+    // Trigger storage event for navbar update
+    window.dispatchEvent(new Event('storage'));
   };
 
   const addToBag = (product) => {
@@ -47,6 +51,67 @@ const Wishlist = () => {
   const clearWishlist = () => {
     setWishlistItems([]);
     localStorage.removeItem('wishlist');
+    // Trigger storage event for navbar update
+    window.dispatchEvent(new Event('storage'));
+  };
+
+  // Add test products for debugging
+  const addTestProducts = () => {
+    const testProducts = [
+      {
+        id: "test1",
+        title: "SNITCH Premium T-Shirt",
+        price: 1499,
+        discountPrice: 1999,
+        rating: 4,
+        ratingCount: 25,
+        category: ["Top", "T-shirts"],
+        colors: [
+          {
+            name: "Black",
+            hex: "#000000",
+            images: ["https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202829/4MST2728-02-M17_oihpwi.webp"]
+          }
+        ],
+        sizes: ["S", "M", "L", "XL"],
+        brand: "Snitch"
+      },
+      {
+        id: "test2", 
+        title: "SNITCH Urban Joggers",
+        price: 2299,
+        discountPrice: 2799,
+        rating: 5,
+        ratingCount: 18,
+        category: ["Bottom", "Joggers"],
+        colors: [
+          {
+            name: "Navy",
+            hex: "#1e3a8a",
+            images: ["https://res.cloudinary.com/dqso1oxdt/image/upload/v1753202827/4MST2728-02_3_5f42dd4e-51e8-42e2-98e6-76213ce0493c_tv7sxs.webp"]
+          }
+        ],
+        sizes: ["S", "M", "L", "XL"],
+        brand: "Snitch"
+      }
+    ];
+    
+    const existingWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+    const updatedWishlist = [...existingWishlist, ...testProducts];
+    console.log('Adding test products to wishlist:', updatedWishlist); // Debug log
+    setWishlistItems(updatedWishlist);
+    localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+    // Trigger storage event for navbar update
+    window.dispatchEvent(new Event('storage'));
+    window.showToast && window.showToast('Added test products to wishlist!', 'wishlist');
+  };
+
+  // Debug function to check localStorage
+  const checkLocalStorage = () => {
+    const wishlist = localStorage.getItem('wishlist');
+    console.log('Raw wishlist data:', wishlist);
+    console.log('Parsed wishlist data:', JSON.parse(wishlist || '[]'));
+    alert('Check console for wishlist data');
   };
 
   return (
@@ -75,12 +140,20 @@ const Wishlist = () => {
             </div>
             <h3 className="text-2xl font-semibold text-gray-900 mb-4">Your wishlist is empty</h3>
             <p className="text-gray-500 mb-8">Start adding items you love to your wishlist!</p>
-            <a
-              href="/"
-              className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200"
-            >
-              Continue Shopping
-            </a>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/"
+                className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-center"
+              >
+                Continue Shopping
+              </Link>
+              <button
+                onClick={addTestProducts}
+                className="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-200"
+              >
+                Add Test Products
+              </button>
+            </div>
           </div>
         ) : (
           <>
@@ -89,12 +162,20 @@ const Wishlist = () => {
               <h2 className="text-2xl font-semibold text-gray-900">
                 Your Favorite Items
               </h2>
-              <button
-                onClick={clearWishlist}
-                className="text-red-600 hover:text-red-800 text-sm font-medium"
-              >
-                Clear All
-              </button>
+              <div className="flex gap-2">
+                <button
+                  onClick={checkLocalStorage}
+                  className="text-blue-600 hover:text-blue-800 text-sm font-medium"
+                >
+                  Debug
+                </button>
+                <button
+                  onClick={clearWishlist}
+                  className="text-red-600 hover:text-red-800 text-sm font-medium"
+                >
+                  Clear All
+                </button>
+              </div>
             </div>
 
             {/* Wishlist Grid */}

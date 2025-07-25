@@ -19,6 +19,7 @@ const Sale = React.lazy(() => import('./components/pages/Sale'))
 const Top = React.lazy(() => import('./components/pages/Top'))
 const Bottom = React.lazy(() => import('./components/pages/Bottom'))
 const Accessories = React.lazy(() => import('./components/pages/Accessories'))
+const Upcoming = React.lazy(() => import('./components/pages/Upcoming'))
 const Wishlist = React.lazy(() => import('./components/pages/Wishlist'))
 const AddToBag = React.lazy(() => import('./components/pages/Addtobag'))
 const Account = React.lazy(() => import('./components/pages/Account'))
@@ -30,7 +31,7 @@ const AppContent = () => {
   const location = useLocation();
   
   // Check if current path doesn't match any defined routes (404 page)
-  const definedRoutes = ['/', '/sale', '/top', '/bottom', '/accessories', '/wishlist', '/bag', '/account'];
+  const definedRoutes = ['/', '/sale', '/top', '/bottom', '/accessories', '/upcoming', '/wishlist', '/bag', '/account'];
   const isNotFoundPage = !definedRoutes.includes(location.pathname) && !location.pathname.startsWith('/product/');
 
   return (
@@ -66,6 +67,11 @@ const AppContent = () => {
           <Route path="/accessories" element={
             <Suspense fallback={<LoadingSpinner message="Loading accessories..." />}>
               <Accessories />
+            </Suspense>
+          } />
+          <Route path="/upcoming" element={
+            <Suspense fallback={<LoadingSpinner message="Loading upcoming collection..." />}>
+              <Upcoming />
             </Suspense>
           } />
           <Route path="/wishlist" element={
