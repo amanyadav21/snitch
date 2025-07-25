@@ -59,7 +59,7 @@ const Navbar = () => {
 
   return (
     <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-black backdrop-blur-md shadow-lg' : 'bg-black'
+      scrolled ? 'bg-white backdrop-blur-md shadow-lg' : 'bg-white'
     }`}>
       <nav className='max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8'>
         <div className='flex justify-between items-center h-14 sm:h-16 lg:h-16'>
@@ -67,10 +67,25 @@ const Navbar = () => {
           <div className='flex-shrink-0'>
             <Link 
               to="/" 
-              className='text-white text-xl sm:text-2xl lg:text-3xl font-bold tracking-wide hover:text-gray-300 transition-colors duration-200'
+              className='flex items-center hover:opacity-80 transition-opacity duration-200'
             >
-              SNITCH
-              <span className='text-green-500 text-xs sm:text-sm ml-1'>●</span>
+              <img 
+                src="https://res.cloudinary.com/dqso1oxdt/image/upload/v1753421426/idEdWeNoJa_logos_jvojb2.png"
+                alt="SNITCH Logo"
+                className="h-7 sm:h-9 lg:h-11 w-auto object-contain max-w-[120px] sm:max-w-[140px] lg:max-w-[160px]"
+                onError={(e) => {
+                  // Fallback to text logo if image fails to load
+                  e.target.style.display = 'none';
+                  e.target.nextSibling.style.display = 'block';
+                }}
+              />
+              {/* <span 
+                className='text-black text-xl sm:text-2xl lg:text-3xl font-bold tracking-wide hidden'
+                style={{ display: 'none' }}
+              >
+                SNITCH
+                <span className='text-green-500 text-xs sm:text-sm ml-1'>●</span>
+              </span> */}
             </Link>
           </div>
 
@@ -80,20 +95,20 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className={`relative px-2 lg:px-4 py-2 text-xs sm:text-sm lg:text-base font-medium transition-all duration-200 rounded-lg group ${
+                className={`relative px-2 lg:px-4 py-2 text-xs sm:text-sm lg:text-base font-medium transition-all duration-200 rounded-full group ${
                   isActive(link.href)
-                    ? 'text-white bg-neutral-700'
-                    : 'text-white hover:text-white hover:bg-neutral-800'
-                } ${link.isSpecial ? 'text-red-400 hover:text-red-300' : ''}`}
+                    ? 'text-white bg-black'
+                    : 'text-black hover:text-white hover:bg-neutral-800'
+                } ${link.isSpecial ? 'text-red-500 hover:text-red-400' : ''}`}
               >
                 {link.name}
                 {/* Active indicator */}
-                {isActive(link.href) && (
-                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-green-500 rounded-full"></span>
-                )}
+                {/* {isActive(link.href) && (
+                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-[#9958EA] rounded-full"></span>
+                )} */}
                 {/* Sale badge */}
                 {link.isSpecial && (
-                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1 lg:px-1.5 py-0.5 rounded-full font-bold">
+                  <span className="absolute -top-1 -right-1 bg-[#D6FF00] text-black text-xs px-1 lg:px-1.5 py-0.5 rounded-xl font-normal">
                     HOT
                   </span>
                 )}
@@ -106,7 +121,7 @@ const Navbar = () => {
             {/* Account Icon */}
             <Link
               to="/account"
-              className='hidden sm:flex p-2 lg:p-2.5 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200 group'
+              className='hidden sm:flex p-2 lg:p-2.5 text-black hover:text-white hover:bg-black rounded-full transition-all duration-200 group'
               aria-label="My Account"
             >
               <FiUser className='h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform duration-200' />
@@ -115,7 +130,7 @@ const Navbar = () => {
             {/* Wishlist */}
             <Link
               to="/wishlist"
-              className='relative p-2 lg:p-2.5 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200 group'
+              className='relative p-2 lg:p-2.5 text-black hover:text-white hover:bg-black rounded-full transition-all duration-200 group'
               aria-label="Wishlist"
             >
               <svg className="h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -127,7 +142,7 @@ const Navbar = () => {
                 />
               </svg>
               {wishlistItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center animate-pulse">
+                <span className="absolute -top-1 -right-1 bg-red-900 text-white text-xs font-medium rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center animate-pulse">
                   {wishlistItems > 99 ? '99+' : wishlistItems}
                 </span>
               )}
@@ -136,12 +151,12 @@ const Navbar = () => {
             {/* Shopping Bag */}
             <Link
               to="/bag"
-              className='relative p-2 lg:p-2.5 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200 group'
+              className='relative p-2 lg:p-2.5 text-black hover:text-white hover:bg-black rounded-full transition-all duration-200 group'
               aria-label="Shopping Bag"
             >
               <FiShoppingCart className='h-4 w-4 sm:h-5 sm:w-5 group-hover:scale-110 transition-transform duration-200' />
               {bagItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-green-500 text-white text-xs font-bold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center animate-bounce">
+                <span className="absolute -top-1 -right-1 bg-[#D6FF00] text-black text-xs font-bold rounded-full h-4 w-4 sm:h-5 sm:w-5 flex items-center justify-center animate-bounce">
                   {bagItems > 99 ? '99+' : bagItems}
                 </span>
               )}
@@ -150,7 +165,7 @@ const Navbar = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className='md:hidden p-2 lg:p-2.5 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200'
+              className='md:hidden p-2 lg:p-2.5 text-gray-700 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200'
               aria-label="Toggle menu"
             >
               {isOpen ? (
@@ -176,8 +191,8 @@ const Navbar = () => {
                 className={`flex items-center justify-between px-3 sm:px-4 py-3 text-base font-medium transition-all duration-200 rounded-lg ${
                   isActive(link.href)
                     ? 'text-white bg-gray-800'
-                    : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
-                } ${link.isSpecial ? 'text-red-400 hover:text-red-300' : ''}`}
+                    : 'text-gray-800 hover:text-white hover:bg-gray-800/50'
+                } ${link.isSpecial ? 'text-red-500 hover:text-red-400' : ''}`}
               >
                 <span className="text-sm sm:text-base">{link.name}</span>
                 {link.isSpecial && (
@@ -196,7 +211,7 @@ const Navbar = () => {
               <Link
                 to="/account"
                 onClick={() => setIsOpen(false)}
-                className='flex items-center w-full px-3 sm:px-4 py-3 text-gray-300 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200'
+                className='flex items-center w-full px-3 sm:px-4 py-3 text-gray-800 hover:text-white hover:bg-gray-800/50 rounded-lg transition-all duration-200'
               >
                 <FiUser className='h-5 w-5 mr-3' />
                 <span className="text-sm sm:text-base">My Account</span>
