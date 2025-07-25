@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom'
 const Hero = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [loadedImages, setLoadedImages] = useState({})
-  const [fallbackMode, setFallbackMode] = useState(false)
 
   // Multiple fallback strategies for bulletproof image loading
   const slides = useMemo(() => [
@@ -86,7 +85,6 @@ const Hero = () => {
             img3.onerror = () => {
               console.warn('❌ All images failed, using gradient fallback')
               setLoadedImages(prev => ({ ...prev, [slide.id]: slide.gradient }))
-              setFallbackMode(true)
               resolve(false)
             }
             img3.src = slide.fallback2

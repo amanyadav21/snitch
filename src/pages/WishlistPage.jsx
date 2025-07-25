@@ -3,12 +3,41 @@ import { Link } from 'react-router-dom';
 
 const Wishlist = () => {
   const [wishlistItems, setWishlistItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // Load wishlist from localStorage
+  const loadWishlist = () => {
+    try {
+      const savedWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
+      console.log('Loaded wishlist:', savedWishlist); // Debug log
+      setWishlistItems(savedWishlist);
+    } catch (error) {
+      console.error('Error loading wishlist:', error);
+      setWishlistItems([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    // Load wishlist from localStorage
-    const savedWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
-    console.log('Loaded wishlist:', savedWishlist); // Debug log
-    setWishlistItems(savedWishlist);
+    // Initial load
+    loadWishlist();
+
+    // Listen for storage changes
+    const handleStorageChange = () => {
+      console.log('Storage changed, reloading wishlist...');
+      loadWishlist();
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    
+    // Custom event for when we update storage from this app
+    window.addEventListener('wishlistUpdate', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('wishlistUpdate', handleStorageChange);
+    };
   }, []);
 
   const removeFromWishlist = (productId) => {
@@ -17,6 +46,7 @@ const Wishlist = () => {
     localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
     // Trigger storage event for navbar update
     window.dispatchEvent(new Event('storage'));
+    window.dispatchEvent(new Event('wishlistUpdate'));
   };
 
   const addToBag = (product) => {
@@ -53,6 +83,7 @@ const Wishlist = () => {
     localStorage.removeItem('wishlist');
     // Trigger storage event for navbar update
     window.dispatchEvent(new Event('storage'));
+    window.dispatchEvent(new Event('wishlistUpdate'));
   };
 
   // Add test products for debugging
@@ -98,11 +129,22 @@ const Wishlist = () => {
     
     const existingWishlist = JSON.parse(localStorage.getItem('wishlist') || '[]');
     const updatedWishlist = [...existingWishlist, ...testProducts];
-    console.log('Adding test products to wishlist:', updatedWishlist); // Debug log
+    console.log('🔄 Adding test products...');
+    console.log('📊 Before update - existing wishlist:', existingWishlist);
+    console.log('📊 After update - updated wishlist:', updatedWishlist);
+    
+    // Update state first
     setWishlistItems(updatedWishlist);
+    
+    // Then update localStorage
     localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+    console.log('💾 Saved to localStorage');
+    
     // Trigger storage event for navbar update
     window.dispatchEvent(new Event('storage'));
+    window.dispatchEvent(new Event('wishlistUpdate'));
+    console.log('📡 Events dispatched');
+    
     window.showToast && window.showToast('Added test products to wishlist!', 'wishlist');
   };
 
@@ -111,7 +153,8 @@ const Wishlist = () => {
     const wishlist = localStorage.getItem('wishlist');
     console.log('Raw wishlist data:', wishlist);
     console.log('Parsed wishlist data:', JSON.parse(wishlist || '[]'));
-    alert('Check console for wishlist data');
+    console.log('Current wishlistItems state:', wishlistItems);
+    alert(`Wishlist items in localStorage: ${wishlist ? JSON.parse(wishlist).length : 0}\nCurrent state items: ${wishlistItems.length}`);
   };
 
   return (
@@ -124,14 +167,19 @@ const Wishlist = () => {
             Save your favorite items for later. Never miss out on the products you love.
           </p>
           <div className="mt-4 text-sm text-gray-500">
-            {wishlistItems.length} {wishlistItems.length === 1 ? 'item' : 'items'} in your wishlist
+            {isLoading ? 'Loading...' : `${wishlistItems.length} ${wishlistItems.length === 1 ? 'item' : 'items'} in your wishlist`}
           </div>
         </div>
       </div>
 
       {/* Wishlist Content */}
       <div className="max-w-7xl mx-auto px-4 py-12">
-        {wishlistItems.length === 0 ? (
+        {isLoading ? (
+          <div className="text-center py-16">
+            <div className="w-12 h-12 border-4 border-gray-300 border-t-black rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-gray-500">Loading your wishlist...</p>
+          </div>
+        ) : wishlistItems.length === 0 ? (
           <div className="text-center py-16">
             <div className="mb-8">
               <svg className="w-24 h-24 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

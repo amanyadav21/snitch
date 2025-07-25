@@ -106,6 +106,8 @@ const ProductDetails = () => {
     
     const updatedWishlist = [...existingWishlist, product];
     localStorage.setItem('wishlist', JSON.stringify(updatedWishlist));
+    window.dispatchEvent(new Event('storage'));
+    window.dispatchEvent(new Event('wishlistUpdate'));
     window.showToast && window.showToast(`Added ${product.title} to wishlist!`, 'wishlist');
   };
 

@@ -1,15 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiHome, FiShoppingBag, FiArrowLeft } from 'react-icons/fi';
+import { FiShoppingBag, FiArrowLeft } from 'react-icons/fi';
 
 const NotFoundPage = () => {
-  const quickLinks = [
-    { name: 'Home', path: '/', icon: FiHome },
-    { name: 'Sale', path: '/sale', icon: FiShoppingBag },
-    { name: 'Top Wear', path: '/top', icon: FiShoppingBag },
-    { name: 'Bottom Wear', path: '/bottom', icon: FiShoppingBag },
-  ];
-
   return (
     <div className="min-h-screen bg-black text-white flex items-center justify-center px-4">
       <div className="max-w-4xl mx-auto text-center">

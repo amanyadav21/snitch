@@ -44,7 +44,7 @@ class ErrorBoundary extends React.Component {
               </Link>
             </div>
             
-            {process.env.NODE_ENV === 'development' && (
+            {import.meta.env.DEV && (
               <details className="mt-8 text-left bg-gray-900/50 p-4 rounded-lg">
                 <summary className="cursor-pointer text-gray-300 mb-2">
                   Error Details (Development Only)
