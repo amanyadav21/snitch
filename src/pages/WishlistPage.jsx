@@ -71,34 +71,34 @@ const Wishlist = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
-      <div className="bg-white py-16">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-[120px] font-bold text-black/40 mb-4">My Wishlist</h1>
-          <div className="mt-4 text-sm text-gray-500">
+      <div className="bg-white pt-20 sm:pt-24 lg:pt-28 pb-8 sm:pb-12 lg:pb-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[120px] font-bold text-black/40 mb-2 sm:mb-4">My Wishlist</h1>
+          <div className="mt-2 sm:mt-4 text-sm sm:text-base text-gray-500">
             {isLoading ? 'Loading...' : `${wishlistItems.length} ${wishlistItems.length === 1 ? 'item' : 'items'} in your wishlist`}
           </div>
         </div>
       </div>
 
       {/* Wishlist Content */}
-      <div className="max-w-8xl mx-auto px-4 py-12">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
         {isLoading ? (
-          <div className="text-center py-16">
-            <div className="w-12 h-12 border-4 border-gray-300 border-t-black rounded-full animate-spin mx-auto mb-4"></div>
-            <p className="text-gray-500">Loading your wishlist...</p>
+          <div className="text-center py-12 sm:py-16">
+            <div className="w-8 h-8 sm:w-12 sm:h-12 border-4 border-gray-300 border-t-black rounded-full animate-spin mx-auto mb-4"></div>
+            <p className="text-gray-500 text-sm sm:text-base">Loading your wishlist...</p>
           </div>
         ) : wishlistItems.length === 0 ? (
-          <div className="text-center py-16">
-            <div className="mb-8">
-              <svg className="w-24 h-24 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="text-center py-12 sm:py-16">
+            <div className="mb-6 sm:mb-8">
+              <svg className="w-16 h-16 sm:w-20 sm:h-20 lg:w-24 lg:h-24 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-4">Your wishlist is empty</h3>
-            <p className="text-gray-500 mb-8">Start adding items you love to your wishlist!</p>
+            <h3 className="text-xl sm:text-2xl font-semibold text-gray-900 mb-3 sm:mb-4">Your wishlist is empty</h3>
+            <p className="text-gray-500 mb-6 sm:mb-8 text-sm sm:text-base px-4">Start adding items you love to your wishlist!</p>
             <Link
               to="/"
-              className="inline-block bg-black text-white px-8 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-center"
+              className="inline-block bg-black text-white px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors duration-200 text-center text-sm sm:text-base"
             >
               Continue Shopping
             </Link>
@@ -106,8 +106,8 @@ const Wishlist = () => {
         ) : (
           <>
             {/* Clear Wishlist Button */}
-            <div className="flex justify-between items-center mb-8">
-              <h2 className="text-2xl font-semibold text-gray-900">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 sm:mb-8 gap-4 sm:gap-0">
+              <h2 className="text-xl sm:text-2xl font-semibold text-gray-900">
                 Your Favorite Items
               </h2>
               <button
@@ -119,7 +119,7 @@ const Wishlist = () => {
             </div>
 
             {/* Wishlist Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
               {wishlistItems.map((product) => (
                 <div
                   key={product.id}
@@ -130,21 +130,21 @@ const Wishlist = () => {
                     <img
                       src={product.colors?.[0]?.images?.[0] || product.images?.[0] || 'https://via.placeholder.com/400x500/f3f4f6/9ca3af?text=No+Image'}
                       alt={product.title || product.name}
-                      className="w-full h-80 object-cover hover:scale-105 transition-transform duration-300"
+                      className="w-full h-64 sm:h-72 lg:h-80 object-cover hover:scale-105 transition-transform duration-300"
                       onError={(e) => {
                         e.target.src = 'https://via.placeholder.com/400x500/f3f4f6/9ca3af?text=No+Image';
                       }}
                     />
                     
                     {/* Badges */}
-                    <div className="absolute top-4 left-4 flex flex-col space-y-2">
+                    <div className="absolute top-2 sm:top-4 left-2 sm:left-4 flex flex-col space-y-1 sm:space-y-2">
                       {product.isOnSale && (
-                        <span className="bg-red-600 text-white px-2 py-1 text-xs font-semibold rounded">
+                        <span className="bg-red-600 text-white px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs font-semibold rounded">
                           SALE
                         </span>
                       )}
                       {product.isLuxe && (
-                        <span className="bg-black text-white px-2 py-1 text-xs font-semibold rounded">
+                        <span className="bg-black text-white px-1.5 sm:px-2 py-0.5 sm:py-1 text-xs font-semibold rounded">
                           LUXE
                         </span>
                       )}
@@ -154,18 +154,18 @@ const Wishlist = () => {
                   {/* Remove from Wishlist Button - Outside the link */}
                   <button
                     onClick={() => removeFromWishlist(product.id)}
-                    className="absolute top-4 right-4 bg-white p-2 rounded-full shadow-md hover:bg-gray-50 z-10"
+                    className="absolute top-2 sm:top-4 right-2 sm:right-4 bg-white p-1.5 sm:p-2 rounded-full shadow-md hover:bg-gray-50 z-10"
                     title="Remove from wishlist"
                   >
-                    <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M6 18L18 6M6 6l12 12" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                   </button>
 
                   {/* Product Info */}
-                  <div className="p-6 flex flex-col flex-grow">
+                  <div className="p-4 sm:p-5 lg:p-6 flex flex-col flex-grow">
                     <Link to={`/product/${product.id}`}>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2 line-clamp-2 hover:text-gray-700 transition-colors duration-200">
+                      <h3 className="text-base sm:text-lg font-semibold text-gray-900 mb-2 line-clamp-2 hover:text-gray-700 transition-colors duration-200">
                         {product.title || product.name}
                       </h3>
                     </Link>
@@ -177,22 +177,22 @@ const Wishlist = () => {
                           {[...Array(5)].map((_, i) => (
                             <svg
                               key={i}
-                              className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'fill-current' : 'text-gray-300'}`}
+                              className={`w-3 h-3 sm:w-4 sm:h-4 ${i < Math.floor(product.rating) ? 'fill-current' : 'text-gray-300'}`}
                               viewBox="0 0 20 20"
                             >
                               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                             </svg>
                           ))}
                         </div>
-                        <span className="text-sm text-gray-500 ml-2">
+                        <span className="text-xs sm:text-sm text-gray-500 ml-2">
                           ({product.ratingCount || product.rating})
                         </span>
                       </div>
                     )}
 
                     {/* Price */}
-                    <div className="flex items-center space-x-2 mb-4">
-                      <span className="text-xl font-bold text-gray-900">
+                    <div className="flex items-center space-x-2 mb-3 sm:mb-4">
+                      <span className="text-lg sm:text-xl font-bold text-gray-900">
                         ₹{product.price}
                       </span>
                       {product.discountPrice && product.discountPrice !== product.price && (
@@ -204,11 +204,11 @@ const Wishlist = () => {
 
                     {/* Colors */}
                     {product.colors && (
-                      <div className="flex space-x-2 mb-4">
+                      <div className="flex space-x-1.5 sm:space-x-2 mb-3 sm:mb-4">
                         {product.colors.slice(0, 4).map((color, index) => (
                           <div
                             key={index}
-                            className="w-6 h-6 rounded-full border-2 border-gray-300"
+                            className="w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 border-gray-300"
                             style={{ backgroundColor: color.hex || color }}
                             title={color.name || color}
                           />
@@ -222,16 +222,16 @@ const Wishlist = () => {
                     )}
 
                     {/* Action Buttons */}
-                    <div className="flex space-x-2 mt-auto">
+                    <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-2 mt-auto">
                       <button
                         onClick={() => removeFromWishlist(product.id)}
-                        className="flex-1 bg-white border border-gray-300 text-gray-900 py-2 px-4 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors duration-200"
+                        className="flex-1 bg-white border border-gray-300 text-gray-900 py-2 px-3 sm:px-4 rounded-md text-sm font-medium hover:bg-gray-50 transition-colors duration-200"
                       >
                         Remove
                       </button>
                       <button
                         onClick={() => addToBag(product)}
-                        className="flex-1 bg-black text-white py-2 px-4 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors duration-200"
+                        className="flex-1 bg-black text-white py-2 px-3 sm:px-4 rounded-md text-sm font-medium hover:bg-gray-800 transition-colors duration-200"
                       >
                         Add to Bag
                       </button>
